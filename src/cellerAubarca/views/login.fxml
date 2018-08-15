@@ -44,9 +44,9 @@
                   <Image url="@/icons/lock.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="146.0" layoutY="334.0" text="Button">
+            <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="128.0" layoutY="336.0" minWidth="10.0" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #a8c545; -fx-background-radius: 100;" text="loginButton">
                <graphic>
-                  <Icon content="EMPTY" style="-fx-background-image: /icons/login.png" />
+                  <Icon content="ARROW_FORWARD" style="-fx-background-color: #a8c545;" />
                </graphic>
             </JFXButton>
          </children></AnchorPane>
