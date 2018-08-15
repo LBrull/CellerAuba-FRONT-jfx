@@ -9,52 +9,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="460.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.LoginController">
-   <children>
-      <AnchorPane prefHeight="460.0" prefWidth="680.0">
-         <children>
-            <ImageView fitHeight="460.0" fitWidth="691.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <image>
-                  <Image url="@/images/splash.jpg" />
-               </image>
+<AnchorPane prefHeight="460.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.LoginController">
+   <AnchorPane prefHeight="460.0" prefWidth="680.0">
+      <ImageView fitHeight="460.0" fitWidth="691.0" pickOnBounds="true" preserveRatio="true"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0.0">
+         <Image url="@/images/splash.jpg"/>
+      </ImageView>
+      <Label layoutX="26.0" layoutY="14.0" prefHeight="121.0" prefWidth="481.0" text="Celler Aubarca">
+         <font>
+            <Font name="Papyrus" size="70.0"/>
+         </font>
+      </Label>
+   </AnchorPane>
+   <AnchorPane layoutX="691.0" prefHeight="460.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="691.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label layoutX="112.0" layoutY="51.0" prefHeight="51.0" prefWidth="86.0" text="Login" textAlignment="CENTER">
+         <font>
+            <Font size="34.0"/>
+         </font>
+      </Label>
+      <JFXPasswordField focusColor="#a8c545" layoutX="81.0" layoutY="248.0" prefHeight="35.0" prefWidth="182.0"
+                        promptText="password"/>
+      <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="30.0" layoutY="190.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@/icons/contacts_40x40.png"/>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="30.0" layoutY="248.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@/icons/lock_40x40.png"/>
+      </ImageView>
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="122.0" layoutY="332.0" prefHeight="60.0"
+                 prefWidth="60.0" ripplerFill="#7d942b"
+                 style="-fx-background-color: #A8C545; -fx-background-radius: 100;" AnchorPane.bottomAnchor="68.0"
+                 AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="332.0">
+         <font>
+            <Font size="54.0"/>
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+               <Image url="@/icons/login_40x40_chocolate.png"/>
             </ImageView>
-            <Label layoutX="26.0" layoutY="14.0" prefHeight="121.0" prefWidth="481.0" text="Celler Aubarca">
-               <font>
-                  <Font name="Papyrus" size="70.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-      <AnchorPane layoutX="691.0" prefHeight="460.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="691.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label layoutX="112.0" layoutY="51.0" prefHeight="51.0" prefWidth="86.0" text="Login" textAlignment="CENTER">
-               <font>
-                  <Font size="34.0" />
-               </font>
-            </Label>
-            <JFXPasswordField focusColor="#a8c545" layoutX="81.0" layoutY="248.0" prefHeight="35.0" prefWidth="182.0" promptText="password" />
-            <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="30.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/icons/contacts_40x40.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="30.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/icons/lock_40x40.png" />
-               </image>
-            </ImageView>
-            <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="122.0" layoutY="332.0" prefHeight="60.0" prefWidth="60.0" ripplerFill="#7d942b" style="-fx-background-color: #A8C545; -fx-background-radius: 100;" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="332.0">
-               <font>
-                  <Font size="54.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" smooth="false">
-                     <image>
-                        <Image url="@/icons/login_40x40_chocolate.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXTextField focusColor="#a8c545" layoutX="81.0" layoutY="190.0" prefHeight="35.0" prefWidth="182.0" promptText="username" />
-         </children></AnchorPane>
-   </children>
+         </graphic>
+      </JFXButton>
+      <JFXTextField focusColor="#a8c545" layoutX="81.0" layoutY="190.0" prefHeight="35.0" prefWidth="182.0"
+                    promptText="username"/>
+   </AnchorPane>
 </AnchorPane>
