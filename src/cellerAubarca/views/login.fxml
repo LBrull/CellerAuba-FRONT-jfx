@@ -40,7 +40,7 @@
                  preserveRatio="true">
          <Image url="@/icons/lock_40x40.png"/>
       </ImageView>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="122.0" layoutY="332.0" prefHeight="60.0"
+      <JFXButton buttonType="FLAT" contentDisplay="GRAPHIC_ONLY" layoutX="122.0" layoutY="332.0" prefHeight="60.0"
                  prefWidth="60.0" ripplerFill="#7d942b"
                  style="-fx-background-color: #A8C545; -fx-background-radius: 100;" AnchorPane.bottomAnchor="68.0"
                  AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="332.0">
