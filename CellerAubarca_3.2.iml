@@ -9,5 +9,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jfoenix-9.0.6" level="project" />
     <orderEntry type="library" name="charm-glisten-4.4.1" level="project" />
+    <orderEntry type="library" name="commons-codec-1.10" level="project" />
+    <orderEntry type="library" name="org.json" level="project" />
+    <orderEntry type="library" name="httpclient-4.5.6" level="project" />
+    <orderEntry type="library" name="httpcore-4.4.10" level="project" />
   </component>
 </module>
