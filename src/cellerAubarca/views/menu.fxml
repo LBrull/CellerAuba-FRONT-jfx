@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -15,12 +16,12 @@
 <AnchorPane fx:id="viewHolder" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.MenuController">
    <AnchorPane layoutY="170.0" maxWidth="255.0" minWidth="255.0" prefWidth="255.0" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="170.0">
       <children>
-         <Label layoutX="48.0" layoutY="61.0" text="Sessió:">
+         <Label layoutX="48.0" layoutY="61.0" text="Sessió:" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="61.0">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Label>
-         <Label layoutX="91.0" layoutY="61.0" text="Label" />
+         <Label fx:id="sessioLabel" layoutX="91.0" layoutY="61.0" text="Label" AnchorPane.leftAnchor="91.0" AnchorPane.topAnchor="61.0" />
          <Label layoutX="21.0" layoutY="111.0" text="Temporada ametlla:" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="111.0">
             <font>
                <Font name="System Bold" size="12.0" />
@@ -41,9 +42,9 @@
                <Image url="@../../icons/contacts_40x40.png" />
             </image>
          </ImageView>
-         <Label layoutX="142.0" layoutY="111.0" text="Label" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="111.0" />
-         <Label layoutX="127.0" layoutY="139.0" text="Label" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="141.0" />
-         <Label layoutX="127.0" layoutY="167.0" text="Label" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="171.0" />
+         <Label fx:id="tempAMLabel" layoutX="142.0" layoutY="111.0" text="Label" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="111.0" />
+         <Label fx:id="tempOLLabel" layoutX="127.0" layoutY="139.0" text="Label" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="141.0" />
+         <Label fx:id="tempRALabel" layoutX="127.0" layoutY="167.0" text="Label" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="171.0" />
       </children>
    </AnchorPane>
     <AnchorPane prefHeight="170.0" prefWidth="1000.0" style="-fx-background-color: #5f5448;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -85,7 +86,7 @@
    </AnchorPane>
    <BorderPane layoutX="271.0" layoutY="183.0" prefHeight="472.0" prefWidth="723.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
       <center>
-         <GridPane alignment="CENTER" hgap="20.0" maxHeight="360.0" maxWidth="450.0" minHeight="360.0" minWidth="450.0" prefHeight="400.0" prefWidth="450.0" vgap="20.0" BorderPane.alignment="CENTER">
+         <GridPane alignment="CENTER" hgap="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="450.0" prefWidth="450.0" vgap="15.0" BorderPane.alignment="CENTER">
            <columnConstraints>
              <ColumnConstraints hgrow="SOMETIMES" maxWidth="449.0" minWidth="10.0" prefWidth="289.0" />
              <ColumnConstraints hgrow="SOMETIMES" maxWidth="683.0" minWidth="10.0" prefWidth="289.0" />
@@ -97,40 +98,46 @@
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
             <children>
-               <JFXButton alignment="CENTER" buttonType="FLAT" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" text="Contactes">
+               <JFXButton alignment="CENTER" buttonType="FLAT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Contactes" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                   <graphic>
                      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@../../icons/FXcontacts_70x70.png" />
+                           <Image url="@../../icons/contacts_100x100.png" />
+                        </image>
+                     </ImageView>
+      
+                  </graphic>
+                  <GridPane.margin>
+                     <Insets />
+                  </GridPane.margin>
+               </JFXButton>
+               <JFXButton alignment="CENTER" buttonType="FLAT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Productes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <graphic>
+                     <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../icons/products_100x100.png" />
                         </image>
                      </ImageView>
       
                   </graphic>
                </JFXButton>
-               <JFXButton alignment="CENTER" buttonType="FLAT" contentDisplay="TOP" prefHeight="120.0" prefWidth="159.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" text="Productes" GridPane.columnIndex="1">
-                  <graphic>
-                     <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../icons/FXproducts_70x70.png" />
-                        </image>
-                     </ImageView>
-      
-                  </graphic>
-               </JFXButton>
-               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" text="Temporades" GridPane.columnIndex="2">
+               <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Temporades" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                   <graphic>
                      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
                   </graphic>
                </JFXButton>
-               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" text="Moviments" GridPane.rowIndex="1">
+               <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Moviments" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                   <graphic>
                      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
                   </graphic>
                </JFXButton>
-               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" GridPane.rowIndex="2" />
+               <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+               <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+               <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
             </children>
+            <BorderPane.margin>
+               <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            </BorderPane.margin>
          </GridPane>
       </center>
    </BorderPane>

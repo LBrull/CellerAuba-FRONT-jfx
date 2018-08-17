@@ -27,8 +27,6 @@ public class LoginController implements Initializable {
 
     private static LoginController instance = null;
 
-    private Stage primaryStage;
-
     @FXML
     private JFXTextField usernameTextField;
     @FXML
@@ -48,8 +46,12 @@ public class LoginController implements Initializable {
         ServerResponse res = DBController.getInstance().login(username, pass);
         if (res.getStatus() == 200) {
             saveToken(res.getToken());
-            MainRunner.changeScene("/cellerAubarca/views/menu.fxml", 1200, 600);
-            MainRunner.getMainStage().setResizable(true);
+
+            // Getting menu controller i cedint responsabilitats
+            FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/cellerAubarca/views/menu.fxml"));
+            Parent root = loader.load();
+            MenuController menuController = loader.getController();
+            menuController.show();
 
         }
         else if (res.getStatus() == 404) {
@@ -93,10 +95,6 @@ public class LoginController implements Initializable {
 //    public void setMainApp(MainRunner mainRunner) {
 //        this.mainRunner = mainRunner;
 //    }
-
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
