@@ -1,14 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.image.Image?>
 <AnchorPane fx:id="viewHolder" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.MenuController">
-    <AnchorPane prefHeight="180.0" prefWidth="1000.0" style="-fx-background-color: #5f5448;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-   <AnchorPane layoutX="46.0" layoutY="46.0" prefHeight="150.0" prefWidth="150.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="60.0">
-      <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <Image url="/icons/grapeLogoWithBackground_150x150.png"/>
-      </ImageView>
+   <AnchorPane layoutY="170.0" maxWidth="255.0" minWidth="255.0" prefWidth="255.0" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="170.0">
+      <children>
+         <Label layoutX="48.0" layoutY="61.0" text="Sessió:">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+         <Label layoutX="91.0" layoutY="61.0" text="Label" />
+         <Label layoutX="21.0" layoutY="111.0" text="Temporada ametlla:" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="111.0">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+         <Label layoutX="22.0" layoutY="167.0" text="Temporada raïm:" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="171.0">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+         <Label layoutX="21.0" layoutY="139.0" text="Temporada oliva:" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="141.0">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="15.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="57.0">
+            <image>
+               <Image url="@../../icons/contacts_40x40.png" />
+            </image>
+         </ImageView>
+         <Label layoutX="142.0" layoutY="111.0" text="Label" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="111.0" />
+         <Label layoutX="127.0" layoutY="139.0" text="Label" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="141.0" />
+         <Label layoutX="127.0" layoutY="167.0" text="Label" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="171.0" />
+      </children>
    </AnchorPane>
+    <AnchorPane prefHeight="170.0" prefWidth="1000.0" style="-fx-background-color: #5f5448;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label layoutX="223.0" layoutY="53.0" text="Celler" textFill="#b2923e">
+           <font>
+               <Font name="Moonbeam Regular" size="40.0" />
+           </font>
+           <effect>
+               <DropShadow />
+           </effect>
+        </Label>
+        <Label layoutX="223.0" layoutY="91.0" text="Aubarca" textFill="#b2923e">
+           <font>
+               <Font name="Moonbeam Regular" size="40.0" />
+           </font>
+           <effect>
+               <DropShadow />
+           </effect>
+        </Label>
+        <Label layoutX="223.0" layoutY="142.0" text="Des de 1968" textFill="#b2923e">
+           <font>
+               <Font size="14.0" />
+           </font>
+           <effect>
+               <DropShadow />
+           </effect>
+        </Label>
+      <effect>
+         <DropShadow />
+      </effect>
+    </AnchorPane>
+   <AnchorPane layoutX="46.0" layoutY="46.0" prefHeight="150.0" prefWidth="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+      <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Image url="@../../icons/grapeLogoWithBackground_150x150.png" />
+      </ImageView>
+      <effect>
+         <DropShadow height="25.0" radius="12.0" width="25.0" />
+      </effect>
+   </AnchorPane>
+   <BorderPane layoutX="271.0" layoutY="183.0" prefHeight="472.0" prefWidth="723.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
+      <center>
+         <GridPane alignment="CENTER" hgap="20.0" maxHeight="360.0" maxWidth="450.0" minHeight="360.0" minWidth="450.0" prefHeight="400.0" prefWidth="450.0" vgap="20.0" BorderPane.alignment="CENTER">
+           <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="449.0" minWidth="10.0" prefWidth="289.0" />
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="683.0" minWidth="10.0" prefWidth="289.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="683.0" minWidth="10.0" prefWidth="289.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+            <children>
+               <JFXButton alignment="CENTER" buttonType="FLAT" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" text="Contactes">
+                  <graphic>
+                     <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../icons/FXcontacts_70x70.png" />
+                        </image>
+                     </ImageView>
+      
+                  </graphic>
+               </JFXButton>
+               <JFXButton alignment="CENTER" buttonType="FLAT" contentDisplay="TOP" prefHeight="120.0" prefWidth="159.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" text="Productes" GridPane.columnIndex="1">
+                  <graphic>
+                     <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../icons/FXproducts_70x70.png" />
+                        </image>
+                     </ImageView>
+      
+                  </graphic>
+               </JFXButton>
+               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" text="Temporades" GridPane.columnIndex="2">
+                  <graphic>
+                     <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
+                  </graphic>
+               </JFXButton>
+               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" text="Moviments" GridPane.rowIndex="1">
+                  <graphic>
+                     <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
+                  </graphic>
+               </JFXButton>
+               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+               <JFXButton alignment="CENTER" contentDisplay="TOP" prefHeight="110.0" prefWidth="289.0" ripplerFill="#a8c545" style="-fx-background-color: #dfd3b6;" GridPane.rowIndex="2" />
+            </children>
+         </GridPane>
+      </center>
+   </BorderPane>
 </AnchorPane>
