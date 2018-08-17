@@ -33,18 +33,12 @@ public class LoginController implements Initializable {
     private JFXPasswordField passwordTextField;
 
 
-    public static LoginController getInstance() {
-        if (instance == null) {
-            instance = new LoginController();
-        }
-        return instance;
-    }
-
     public void login(ActionEvent actionEvent) throws Exception {
         String pass = passwordTextField.getText();
         String username = usernameTextField.getText();
         ServerResponse res = DBController.getInstance().login(username, pass);
         if (res.getStatus() == 200) {
+            MainRunner.setSession(username);
             saveToken(res.getToken());
 
             // Getting menu controller i cedint responsabilitats

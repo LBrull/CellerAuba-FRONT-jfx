@@ -1,22 +1,31 @@
 package cellerAubarca.controllers;
 
 import cellerAubarca.MainRunner;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuController {
-
-//    private static MenuController instance;
+public class MenuController implements Initializable {
 
     @FXML
+    public JFXButton contactsButton;
+    public ImageView contactsIcon;
+    public JFXButton productsButton;
+    public ImageView productsIcon;
+    public JFXButton temporadesButton;
+    public ImageView temporadesIcon;
     private AnchorPane viewHolder;
     public ImageView logoImageView;
     public Label sessioLabel;
@@ -25,25 +34,29 @@ public class MenuController {
     public Label tempRALabel;
 
 
-//    public static MenuController getInstance() {
-//        if (instance == null) {
-//            instance = new MenuController();
-//        }
-//        return instance;
-//    }
-
-    public void setUsername(String username) {
-        sessioLabel.setText(username);
-    }
-
     public void show() throws IOException {
         MainRunner.changeScene("/cellerAubarca/views/menu.fxml", 1200, 800);
         MainRunner.getMainStage().setResizable(true);
         MainRunner.getMainStage().setMinHeight(650);
         MainRunner.getMainStage().setMinWidth(800);
-//        FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/cellerAubarca/views/menu.fxml"));
-//        loader.setController(this);
-//        sessioLabel.setText("admin");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        sessioLabel.setText(MainRunner.getSession());
+    }
+
+    public void contactsView() throws IOException {
+        Stage contactsStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/cellerAubarca/views/contacts.fxml"));
+        Parent contactsParent = loader.load();
+        ContactsController contactsController = loader.getController();
+        contactsStage.setTitle("Celler Aubarca - Contactes");
+        contactsStage.getIcons().add(new Image("/icons/grapeLogo.png"));
+        //set scene to the stage
+        Scene contactsScene = new Scene(contactsParent, 1024,768);
+        contactsStage.setScene(contactsScene);
+        contactsStage.show();
     }
 
 }

@@ -16,6 +16,8 @@ public class MainRunner extends Application {
 
     private static Stage primaryStage;
     private static BorderPane rootLayout;
+    private static String session;
+    private static Scene mainScene;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,6 +26,19 @@ public class MainRunner extends Application {
     public static Stage getMainStage() {
         return primaryStage;
     }
+
+    public static String getSession() {
+        return session;
+    }
+
+    public static void setSession(String username) {
+        session = username;
+    }
+
+    public static Scene getScene() {
+        return mainScene;
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -35,56 +50,14 @@ public class MainRunner extends Application {
         //load the first scene from a fxml file
         Parent root = FXMLLoader.load(MainRunner.class.getResource("/cellerAubarca/views/login.fxml"));
         //set scene to the stage
-        primaryStage.setScene(new Scene(root, 1281,640));
+        mainScene = new Scene(root, 1281,640);
+        primaryStage.setScene(mainScene);
         primaryStage.show();
 
-        //initRootLayout();
-        //showLogin();
     }
 
     public static void changeScene(String sceneUrl, int width, int height) throws IOException {
         Parent root = FXMLLoader.load(MainRunner.class.getResource(sceneUrl));
         primaryStage.setScene(new Scene(root, width, height));
     }
-
-//    private void showLogin() {
-//        try {
-//            // Load person overview.
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(MainRunner.class.getResource("/cellerAubarca/views/login.fxml"));
-//            AnchorPane loginView = loader.load();
-//            LoginController loginController = loader.getController();
-//            loginController.setPrimaryStage(primaryStage);
-//            // Set person overview into the center of root layout.
-//            rootLayout.setCenter(loginView);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-//    private void initRootLayout() {
-//        try {
-//            // Load root layout from fxml file.
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(MainRunner.class.getResource("/cellerAubarca/views/rootLayout.fxml"));
-//            rootLayout = loader.load();
-//
-//            // Show the scene containing the root layout.
-//            Scene scene = new Scene(rootLayout, 1281, 640);
-//            primaryStage.setScene(scene);
-//            primaryStage.show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-//    public Stage getPrimaryStage() {
-//        return primaryStage;
-//    }
-//
-//    public void setPrimaryStage(Stage primaryStage) {
-//        this.primaryStage = primaryStage;
-//    }
-
 }
