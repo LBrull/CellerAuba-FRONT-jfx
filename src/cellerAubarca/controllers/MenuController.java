@@ -33,6 +33,8 @@ public class MenuController implements Initializable {
     public Label tempOLLabel;
     public Label tempRALabel;
 
+    private ContactsController contactsController;
+
 
     public void show() throws IOException {
         MainRunner.changeScene("/cellerAubarca/views/menu.fxml", 1200, 800);
@@ -50,11 +52,11 @@ public class MenuController implements Initializable {
         Stage contactsStage = new Stage();
         FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/cellerAubarca/views/contacts.fxml"));
         Parent contactsParent = loader.load();
-        ContactsController contactsController = loader.getController();
+        contactsController = loader.getController();
         contactsStage.setTitle("Celler Aubarca - Contactes");
         contactsStage.getIcons().add(new Image("/icons/grapeLogo.png"));
         //set scene to the stage
-        Scene contactsScene = new Scene(contactsParent, 1024,768);
+        Scene contactsScene = new Scene(contactsParent, 1200,768);
         contactsStage.setScene(contactsScene);
         contactsStage.show();
     }

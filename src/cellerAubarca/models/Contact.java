@@ -3,7 +3,6 @@ package cellerAubarca.models;
 public abstract class Contact {
 
     private String objectId;
-
     private String name;
     private String surname;
     private String dni_nif;
@@ -101,7 +100,7 @@ public abstract class Contact {
         this.accountNumber = accountNumber;
     }
 
-    public Object getObjectId() {
+    public String getObjectId() {
         return objectId;
     }
 
