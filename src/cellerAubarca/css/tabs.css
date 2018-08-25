@@ -1,0 +1,41 @@
+/*TablPane styling*/
+
+
+{
+    -fx-primary : #dfd3b6;
+    -fx-secondary : #5d1137;
+    -fx-primarytext : #5d1137;
+    -fx-blue: #5d1137;
+    -fx-red: #5d1137;
+    -fx-color-1:#5d1137;
+}
+
+
+.tab{
+    -fx-background-color: -fx-primary;
+    -fx-min-height: 35;
+    -fx-pref-height: 35;
+    -fx-max-height : 35;
+
+    -fx-min-width: 100;
+    -fx-pref-width: 400;
+    -fx-max-width : 600;
+}
+
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+
+.tab-label{
+    -fx-text-fill: -fx-secondary;
+    -fx-font-size: 10pt;
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-background-color: -fx-secondary;
+    -fx-pref-height: 2;
+}
+
+.jfx-tab-pane .tab-header-area .jfx-rippler{
+    -jfx-rippler-fill: #b2923D;
+}

@@ -3,14 +3,16 @@ package cellerAubarca.controllers;
 import cellerAubarca.models.Client;
 import cellerAubarca.models.ContactDataModel;
 import cellerAubarca.models.Provider;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,9 +21,14 @@ import java.util.ResourceBundle;
 public class ContactsController implements Initializable {
     public TableView<ContactDataModel> providersTable;
     public TableView<ContactDataModel> clientsTable;
-
+    public Tab providersTab;
+    public Tab clientsTab;
+    public JFXTabPane tabPane;
+    public AnchorPane rootContactsPane;
 
     public ContactsController () {
+        rootContactsPane = new AnchorPane();
+        tabPane = new JFXTabPane();
         providersTable = new TableView<>();
         clientsTable = new TableView<>();
     }
@@ -89,6 +96,7 @@ public class ContactsController implements Initializable {
         ObservableList<ContactDataModel> clientsData = toObservableArrayListOfClients(DBController.getInstance().getDBContactsController().getClients());
         clientsTable.setItems(clientsData);
         clientsTable.getColumns().setAll(idCol, nameCol, surnameCol, dniCol, telephoneCol, accountNumberCol, emailCol, cpCol, townCol, addressCol);
+
     }
 
     private ObservableList toObservableArrayListOfClients(ArrayList<Client> clients) {
