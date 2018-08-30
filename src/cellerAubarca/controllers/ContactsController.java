@@ -6,6 +6,7 @@ import cellerAubarca.models.Provider;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
@@ -30,7 +31,9 @@ public class ContactsController implements Initializable {
         rootContactsPane = new AnchorPane();
         tabPane = new JFXTabPane();
         providersTable = new TableView<>();
+        providersTable.setEditable(true);
         clientsTable = new TableView<>();
+        clientsTable.setEditable(true);
     }
 
     @Override
@@ -41,6 +44,17 @@ public class ContactsController implements Initializable {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void deleteClient(ContactDataModel client) throws IOException {
+        DBController.getInstance().getDBContactsController().deleteOneClient(client.getObjectId());
+        clientsTable.getItems().remove(client);
+    }
+
+    public void deleteProvider(ContactDataModel provider) throws IOException {
+        DBController.getInstance().getDBContactsController().deleteOneProvider(provider.getObjectId());
+        providersTable.getItems().remove(provider);
 
     }
 
@@ -115,5 +129,18 @@ public class ContactsController implements Initializable {
             data.add(contactDataModel);
         }
         return data;
+    }
+
+    public void delete(ActionEvent actionEvent) throws IOException {
+        int tabIndex = tabPane.getSelectionModel().getSelectedIndex();
+        if (tabIndex == 0) { //pestanya providers
+            ContactDataModel provider = providersTable.getSelectionModel().getSelectedItem();
+            deleteProvider(provider);
+        }
+        else { //pestanya clients
+            ContactDataModel client = clientsTable.getSelectionModel().getSelectedItem();
+            System.out.println("ID: " + client.getObjectId());
+            deleteClient(client);
+        }
     }
 }

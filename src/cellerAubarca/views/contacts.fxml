@@ -38,9 +38,9 @@
             <DropShadow />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="683.0" layoutY="451.0" maxHeight="90.0" prefHeight="90.0" prefWidth="1225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane layoutX="683.0" layoutY="451.0" maxHeight="110.0" minHeight="110.0" prefHeight="90.0" prefWidth="1225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="1140.0" layoutY="87.0" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="1140.0" layoutY="87.0" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,20 +49,11 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="971.0" layoutY="38.0" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="10.0">
+            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="971.0" layoutY="38.0" onAction="#delete" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="20.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/delete_70x70.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="1068.0" layoutY="38.0" prefHeight="68.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../icons/edit.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -79,13 +70,13 @@
             <JFXTextField focusColor="#b2923e" layoutX="62.0" layoutY="13.0" prefHeight="25.0" prefWidth="1040.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
          </children>
       </AnchorPane>
-      <JFXTabPane fx:id="tabPane" layoutX="64.0" layoutY="205.0" prefHeight="391.0" prefWidth="1125.0" stylesheets="@../css/tabs.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="180.0">
+      <JFXTabPane fx:id="tabPane" layoutX="64.0" layoutY="205.0" prefHeight="391.0" prefWidth="1125.0" stylesheets="@../css/tabs.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="180.0">
          <tabs>
             <Tab text="Proveidors">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="providersTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="providersTable" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="C1" />
                             <TableColumn prefWidth="75.0" text="C2" />
@@ -99,7 +90,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="clientsTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="clientsTable" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="C1" />
                             <TableColumn prefWidth="75.0" text="C2" />
