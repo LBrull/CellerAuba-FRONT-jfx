@@ -2,7 +2,7 @@ package cellerAubarca.models;
 
 public enum Type {
     AMETLLA("AM", "Ametlla"),
-    RAIM("RA", "Raim"),
+    RAIM("RA", "Raïm"),
     OLIVA("OL", "Oliva");
 
     private String code;

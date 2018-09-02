@@ -67,6 +67,12 @@ public class ProductsController implements Initializable {
             int row = pos.getRow();
             ProductDataModel product = event.getTableView().getItems().get(row);
             product.setType(newType.getCode());
+            Product newProduct = product.toProduct();
+            try {
+                DBController.getInstance().getDBProductsController().editProduct(newProduct);
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            }
         });
         typeCol.setMinWidth(100);
 
