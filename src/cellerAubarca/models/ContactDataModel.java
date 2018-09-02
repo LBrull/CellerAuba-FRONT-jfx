@@ -29,6 +29,36 @@ public class ContactDataModel {
 
     }
 
+    public Provider toProvider() {
+        Provider p = new Provider();
+        p.setObjectId(getObjectId());
+        p.setName(getName());
+        p.setSurname(getSurname());
+        p.setDni_nif(getDni_nif());
+        p.setTelephone(getTelephone());
+        p.setCP(getCp());
+        p.setTown(getTown());
+        p.setEmail(getEmail());
+        p.setAddress(getAddress());
+        p.setAccountNumber(getAccountNumber());
+        return p;
+    }
+
+    public Client toClient() {
+        Client p = new Client();
+        p.setObjectId(getObjectId());
+        p.setName(getName());
+        p.setSurname(getSurname());
+        p.setDni_nif(getDni_nif());
+        p.setTelephone(getTelephone());
+        p.setCP(getCp());
+        p.setTown(getTown());
+        p.setEmail(getEmail());
+        p.setAddress(getAddress());
+        p.setAccountNumber(getAccountNumber());
+        return p;
+    }
+
     public String getObjectId() {
         return objectId.get();
     }
