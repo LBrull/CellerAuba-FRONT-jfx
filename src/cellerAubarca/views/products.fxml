@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="777.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/10.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.ProductsController">
+    <AnchorPane layoutX="24.0" layoutY="24.0" maxHeight="100.0" prefHeight="100.0" prefWidth="1190.0"
+                style="-fx-background-color: #5f5448;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0">
+        <effect>
+            <DropShadow/>
+        </effect>
+        <Text fill="#b2923e" layoutX="32.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Celler Aubarca" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
+            <font>
+                <Font name="Moonbeam Regular" size="36.0"/>
+            </font>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Text>
+        <Text fill="#b2923e" layoutX="164.0" layoutY="85.423828125" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Productes" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="66.0">
+            <font>
+                <Font size="18.0"/>
+            </font>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Text>
+    </AnchorPane>
+    <AnchorPane layoutX="14.0" layoutY="547.0" maxHeight="110.0" minHeight="110.0" prefHeight="90.0"
+                prefWidth="1225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0">
+        <JFXButton fx:id="addButton" contentDisplay="GRAPHIC_ONLY" layoutX="1140.0" layoutY="87.0"
+                   onAction="#newProduct" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e"
+                   style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="20.0"
+                   AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../icons/add_product.png"/>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="971.0" layoutY="38.0" onAction="#delete" prefHeight="80.0"
+                   prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;"
+                   AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="20.0">
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../icons/delete_70x70.png"/>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+    </AnchorPane>
+    <TableView fx:id="productsTable" editable="true" layoutX="459.0" layoutY="289.0" prefHeight="200.0"
+               prefWidth="200.0" style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;"
+               AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0"
+               AnchorPane.topAnchor="180.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1"/>
+          <TableColumn prefWidth="75.0" text="C2"/>
+        </columns>
+    </TableView>
+</AnchorPane>

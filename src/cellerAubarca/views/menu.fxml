@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="viewHolder" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.MenuController">
+<AnchorPane fx:id="viewHolder" prefHeight="745.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.MenuController">
    <AnchorPane layoutY="170.0" maxWidth="255.0" minWidth="255.0" prefWidth="255.0" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="170.0">
       <children>
          <Label layoutX="48.0" layoutY="61.0" text="Sessió:" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="61.0">
@@ -115,7 +115,7 @@
                      <Insets />
                   </GridPane.margin>
                </JFXButton>
-               <JFXButton fx:id="productsButton" alignment="CENTER" buttonType="FLAT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Productes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <JFXButton fx:id="productsButton" alignment="CENTER" buttonType="FLAT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#productsView" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Productes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                   <graphic>
                      <ImageView fx:id="productsIcon" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -125,7 +125,7 @@
       
                               </graphic>
                </JFXButton>
-               <JFXButton fx:id="temporadesButton" alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Temporades" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <JFXButton fx:id="temporadesButton" alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#temporadesView" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Temporades" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                   <graphic>
                      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                         <image>

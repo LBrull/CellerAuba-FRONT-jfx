@@ -7,6 +7,7 @@ public class Product {
     private String price;
     private String objectId;
 
+
     public Product() {
 
     }
@@ -55,4 +56,6 @@ public class Product {
     public String getObjectId() {
         return objectId;
     }
+
+
 }

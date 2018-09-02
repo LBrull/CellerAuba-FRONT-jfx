@@ -2,6 +2,7 @@ package cellerAubarca.controllers;
 
 import cellerAubarca.MainRunner;
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +27,7 @@ public class MenuController implements Initializable {
     public ImageView productsIcon;
     public JFXButton temporadesButton;
     public ImageView temporadesIcon;
+    @FXML
     private AnchorPane viewHolder;
     public ImageView logoImageView;
     public Label sessioLabel;
@@ -34,6 +36,7 @@ public class MenuController implements Initializable {
     public Label tempRALabel;
 
     private ContactsController contactsController;
+    private ProductsController productsController;
 
 
     public void show() throws IOException {
@@ -61,4 +64,19 @@ public class MenuController implements Initializable {
         contactsStage.show();
     }
 
+    public void productsView() throws IOException {
+        Stage contactsStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/cellerAubarca/views/products.fxml"));
+        Parent contactsParent = loader.load();
+        productsController = loader.getController();
+        contactsStage.setTitle("Celler Aubarca - Productes");
+        contactsStage.getIcons().add(new Image("/icons/grapeLogo.png"));
+        //set scene to the stage
+        Scene contactsScene = new Scene(contactsParent, 1000,700);
+        contactsStage.setScene(contactsScene);
+        contactsStage.show();
+    }
+
+    public void temporadesView(ActionEvent actionEvent) {
+    }
 }
