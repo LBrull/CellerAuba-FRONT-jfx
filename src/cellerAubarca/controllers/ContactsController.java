@@ -69,7 +69,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setName(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -86,7 +85,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo Nombre: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setSurname(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -103,7 +101,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo Nombre: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setDniNif(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -120,7 +117,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo Nombre: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setTelephone(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -137,7 +133,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo Nombre: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setEmail(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -154,7 +149,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo Nombre: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setAccountNumber(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -171,7 +165,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo Nombre: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setCp(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -188,7 +181,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo Nombre: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setTown(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -205,7 +197,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo : " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setAddress(data.getNewValue());
-            //TODO: enviar peticio modificar proveidor
             Provider newProvider = p.toProvider();
             try {
                 DBController.getInstance().getDBContactsController().editProvider(newProvider);
@@ -231,7 +222,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setName(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
@@ -248,7 +238,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setSurname(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
@@ -265,7 +254,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setDniNif(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
@@ -282,7 +270,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setTelephone(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
@@ -299,7 +286,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setEmail(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
@@ -316,7 +302,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setAccountNumber(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
@@ -333,7 +318,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setCp(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
@@ -350,7 +334,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setTown(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
@@ -367,7 +350,6 @@ public class ContactsController implements Initializable {
             System.out.println("Antiguo: " + data.getOldValue());
             ContactDataModel p = data.getRowValue();
             p.setAddress(data.getNewValue());
-            //TODO: enviar peticio modificar client
             Client newClient = p.toClient();
             try {
                 DBController.getInstance().getDBContactsController().editClient(newClient);
