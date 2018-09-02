@@ -7,15 +7,12 @@ import cellerAubarca.models.ServerResponse;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,8 +24,8 @@ import java.util.ResourceBundle;
 public class ContactsController implements Initializable {
     public TableView<ContactDataModel> providersTable;
     public TableView<ContactDataModel> clientsTable;
-    public Tab providersTab;
-    public Tab clientsTab;
+//    public Tab providersTab;
+//    public Tab clientsTab;
     public JFXTabPane tabPane;
     public AnchorPane rootContactsPane;
 
@@ -386,7 +383,7 @@ public class ContactsController implements Initializable {
         return data;
     }
 
-    public void delete(ActionEvent actionEvent) throws IOException {
+    public void delete() throws IOException {
         int tabIndex = tabPane.getSelectionModel().getSelectedIndex();
         if (tabIndex == 0) { //pestanya providers
             ContactDataModel provider = providersTable.getSelectionModel().getSelectedItem();
@@ -398,7 +395,7 @@ public class ContactsController implements Initializable {
         }
     }
 
-    public void newContact(ActionEvent actionEvent) throws IOException, JSONException {
+    public void newContact() throws IOException, JSONException {
         int tabIndex = tabPane.getSelectionModel().getSelectedIndex();
         if (tabIndex == 0) { //pestanya providers
             Provider newProvider = new Provider();
