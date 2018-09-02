@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.util.Callback;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -117,7 +118,14 @@ public class ProductsController implements Initializable {
         return data;
     }
 
-    public void newProduct(ActionEvent actionEvent) {
+    public void newProduct(ActionEvent actionEvent) throws IOException, JSONException {
+        Product newProduct = new Product();
+        ServerResponse serverResponse = DBController.getInstance().getDBProductsController().saveNewProduct(newProduct);
+        JSONObject object = new JSONObject(serverResponse.getMessage());
+        JSONObject product = object.getJSONObject("product");
+        String newId = product.getString("_id");
+        ProductDataModel productDataModel = new ProductDataModel(newId, "", "", "");
+        productsTable.getItems().add(productDataModel);
     }
 
     public void delete(ActionEvent actionEvent) throws IOException {

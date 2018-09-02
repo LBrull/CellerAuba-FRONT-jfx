@@ -8,22 +8,6 @@ public class ProductDataModel {
     private final SimpleStringProperty description;
     private final SimpleStringProperty type;
     private final SimpleStringProperty price;
-//    public enum Type {
-//        AM("AM"),
-//        RA("RA"),
-//        OL("OL");
-//
-//        private String tipus;
-//
-//        Type(String type) {
-//            this.tipus = type;
-//        }
-//
-//        public String getTipus() {
-//            return tipus;
-//        }
-//
-//    }
 
     public ProductDataModel(String objectId, String description, String type, String price){
         this.objectId = new SimpleStringProperty(objectId);
