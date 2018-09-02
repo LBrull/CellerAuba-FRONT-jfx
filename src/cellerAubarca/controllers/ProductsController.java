@@ -19,11 +19,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ProductsController implements Initializable {
-    public TableView productsTable;
+    public TableView<ProductDataModel> productsTable;
     public JFXButton addButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         try {
             setProductsTableData();
         } catch (IOException | JSONException e) {
@@ -119,6 +120,13 @@ public class ProductsController implements Initializable {
     public void newProduct(ActionEvent actionEvent) {
     }
 
-    public void delete(ActionEvent actionEvent) {
+    public void delete(ActionEvent actionEvent) throws IOException {
+        ProductDataModel product = productsTable.getSelectionModel().getSelectedItem();
+        deleteProduct(product);
+    }
+
+    private void deleteProduct(ProductDataModel product) throws IOException {
+        DBController.getInstance().getDBProductsController().deleteOneProduct(product.getObjectId());
+        productsTable.getItems().remove(product);
     }
 }
