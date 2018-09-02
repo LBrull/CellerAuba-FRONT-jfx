@@ -3,6 +3,7 @@ package cellerAubarca.controllers;
 import cellerAubarca.models.Client;
 import cellerAubarca.models.ContactDataModel;
 import cellerAubarca.models.Provider;
+import cellerAubarca.models.ServerResponse;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +15,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -390,8 +394,29 @@ public class ContactsController implements Initializable {
         }
         else { //pestanya clients
             ContactDataModel client = clientsTable.getSelectionModel().getSelectedItem();
-            System.out.println("ID: " + client.getObjectId());
             deleteClient(client);
+        }
+    }
+
+    public void newContact(ActionEvent actionEvent) throws IOException, JSONException {
+        int tabIndex = tabPane.getSelectionModel().getSelectedIndex();
+        if (tabIndex == 0) { //pestanya providers
+            Provider newProvider = new Provider();
+            ServerResponse serverResponse = DBController.getInstance().getDBContactsController().saveNewProvider(newProvider);
+            JSONObject object = new JSONObject(serverResponse.getMessage());
+            JSONObject provider = object.getJSONObject("provider");
+            String newId = provider.getString("_id");
+            ContactDataModel contactDataModel = new ContactDataModel(newId, "", "", "", "", "", "", "", "", "");
+            providersTable.getItems().add(contactDataModel);
+        }
+        else { //pestanya clients
+            Client newClient = new Client();
+            ServerResponse serverResponse = DBController.getInstance().getDBContactsController().saveNewClient(newClient);
+            JSONObject object = new JSONObject(serverResponse.getMessage());
+            JSONObject provider = object.getJSONObject("client");
+            String newId = provider.getString("_id");
+            ContactDataModel contactDataModel = new ContactDataModel(newId, "", "", "", "", "", "", "", "", "");
+            clientsTable.getItems().add(contactDataModel);
         }
     }
 }

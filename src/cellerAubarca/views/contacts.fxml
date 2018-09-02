@@ -40,7 +40,7 @@
       </AnchorPane>
       <AnchorPane layoutX="683.0" layoutY="451.0" maxHeight="110.0" minHeight="110.0" prefHeight="90.0" prefWidth="1225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="1140.0" layoutY="87.0" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <JFXButton fx:id="addButton" contentDisplay="GRAPHIC_ONLY" layoutX="1140.0" layoutY="87.0" onAction="#newContact" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>

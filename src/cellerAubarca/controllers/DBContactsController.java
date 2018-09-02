@@ -66,7 +66,7 @@ public class DBContactsController {
     public ArrayList<Provider> getProviders() throws IOException, JSONException {
         ArrayList<Provider> list = new ArrayList<>();
 
-       String url = DatabaseUrl + "/api/providers";
+        String url = DatabaseUrl + "/api/providers";
         CloseableHttpClient client = HttpClients.createDefault();
         HttpGet get = new HttpGet(url);
 
@@ -266,7 +266,7 @@ public class DBContactsController {
 
     }
 
-    public ServerResponse editProvider(Provider provider) throws JSONException, IOException {
+    public static ServerResponse editProvider(Provider provider) throws JSONException, IOException {
         String url = DatabaseUrl +"/api/provider/" + provider.getObjectId();
         System.out.println("ID  QUE ENVIO: "+ provider.getObjectId());
         CloseableHttpClient client = HttpClients.createDefault();
@@ -311,7 +311,7 @@ public class DBContactsController {
         }
     }
 
-    public ServerResponse editClient(Client client) throws JSONException, IOException {
+    public static ServerResponse editClient(Client client) throws JSONException, IOException {
         String url = DatabaseUrl +"/api/client/" + client.getObjectId();
         System.out.println("ID  QUE ENVIO: "+ client.getObjectId());
         CloseableHttpClient httpClient = HttpClients.createDefault();
