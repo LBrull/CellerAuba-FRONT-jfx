@@ -3,17 +3,14 @@ package cellerAubarca.controllers;
 import cellerAubarca.models.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
-import javafx.util.Callback;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;

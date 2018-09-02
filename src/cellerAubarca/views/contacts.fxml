@@ -13,94 +13,93 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootContactsPane" prefHeight="714.0" prefWidth="1225.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.ContactsController">
-   <children>
-      <AnchorPane layoutX="14.0" layoutY="14.0" maxHeight="100.0" prefHeight="100.0" prefWidth="1190.0" style="-fx-background-color: #5f5448;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text fill="#b2923e" layoutX="32.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celler Aubarca" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
-               <font>
-                  <Font name="Moonbeam Regular" size="36.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Text>
-            <Text fill="#b2923e" layoutX="164.0" layoutY="85.423828125" strokeType="OUTSIDE" strokeWidth="0.0" text="Contactes" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="66.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Text>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </AnchorPane>
-      <AnchorPane layoutX="683.0" layoutY="451.0" maxHeight="110.0" minHeight="110.0" prefHeight="90.0" prefWidth="1225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <JFXButton fx:id="addButton" contentDisplay="GRAPHIC_ONLY" layoutX="1140.0" layoutY="87.0" onAction="#newContact" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../icons/add_contact.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="971.0" layoutY="38.0" onAction="#delete" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="20.0">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../icons/delete_70x70.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="51.0" layoutY="112.0" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="1125.0" AnchorPane.bottomAnchor="546.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="120.0">
-         <children>
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
-               <image>
-                  <Image url="@../../icons/search_70x70.png" />
-               </image>
-            </ImageView>
-            <JFXTextField focusColor="#b2923e" layoutX="62.0" layoutY="13.0" prefHeight="25.0" prefWidth="1040.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
-         </children>
-      </AnchorPane>
-      <JFXTabPane fx:id="tabPane" layoutX="64.0" layoutY="205.0" prefHeight="391.0" prefWidth="1125.0" stylesheets="@../css/tabs.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="180.0">
-         <tabs>
-            <Tab text="Proveidors">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="providersTable" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Clients">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="clientsTable" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-         </tabs>
-      </JFXTabPane>
-   </children>
+<AnchorPane fx:id="rootContactsPane" prefHeight="714.0" prefWidth="1225.0" xmlns="http://javafx.com/javafx/10.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.ContactsController">
+    <AnchorPane layoutX="14.0" layoutY="14.0" maxHeight="100.0" prefHeight="100.0" prefWidth="1190.0"
+                style="-fx-background-color: #5f5448;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0">
+        <effect>
+            <DropShadow/>
+        </effect>
+        <Text fill="#b2923e" layoutX="32.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Celler Aubarca" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
+            <font>
+                <Font name="Moonbeam Regular" size="36.0"/>
+            </font>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Text>
+        <Text fill="#b2923e" layoutX="164.0" layoutY="85.423828125" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Contactes" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="66.0">
+            <font>
+                <Font size="18.0"/>
+            </font>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Text>
+    </AnchorPane>
+    <AnchorPane layoutX="683.0" layoutY="451.0" maxHeight="110.0" minHeight="110.0" prefHeight="90.0" prefWidth="1225.0"
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <JFXButton fx:id="addButton" contentDisplay="GRAPHIC_ONLY" layoutX="1140.0" layoutY="87.0"
+                   onAction="#newContact" prefHeight="80.0" prefWidth="80.0" ripplerFill="#b2923e"
+                   style="-fx-background-color: #dfd3b6;" AnchorPane.bottomAnchor="20.0"
+                   AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../icons/add_contact.png"/>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="971.0" layoutY="38.0" onAction="#delete" prefHeight="80.0"
+                   prefWidth="80.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;"
+                   AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="20.0">
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../icons/delete_70x70.png"/>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+    </AnchorPane>
+    <AnchorPane layoutX="51.0" layoutY="112.0" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="1125.0"
+                AnchorPane.bottomAnchor="546.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0"
+                AnchorPane.topAnchor="120.0">
+        <ImageView fitHeight="35.0" fitWidth="35.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true"
+                   AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
+            <Image url="@../../icons/search_70x70.png"/>
+        </ImageView>
+        <JFXTextField focusColor="#b2923e" layoutX="62.0" layoutY="13.0" prefHeight="25.0" prefWidth="1040.0"
+                      AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0"/>
+    </AnchorPane>
+    <JFXTabPane fx:id="tabPane" layoutX="64.0" layoutY="205.0" prefHeight="391.0" prefWidth="1125.0"
+                stylesheets="@../css/tabs.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="50.0"
+                AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="180.0">
+        <Tab text="Proveidors">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <TableView fx:id="providersTable" editable="true" prefHeight="200.0" prefWidth="200.0"
+                           style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;"
+                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="C1"/>
+                        <TableColumn prefWidth="75.0" text="C2"/>
+                    </columns>
+                </TableView>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Clients">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <TableView fx:id="clientsTable" editable="true" prefHeight="200.0" prefWidth="200.0"
+                           style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;"
+                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="C1"/>
+                        <TableColumn prefWidth="75.0" text="C2"/>
+                    </columns>
+                </TableView>
+            </AnchorPane>
+        </Tab>
+    </JFXTabPane>
 </AnchorPane>

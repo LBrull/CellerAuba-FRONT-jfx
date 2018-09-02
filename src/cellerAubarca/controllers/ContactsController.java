@@ -4,6 +4,7 @@ import cellerAubarca.models.Client;
 import cellerAubarca.models.ContactDataModel;
 import cellerAubarca.models.Provider;
 import cellerAubarca.models.ServerResponse;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +16,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,10 +24,9 @@ import java.util.ResourceBundle;
 public class ContactsController implements Initializable {
     public TableView<ContactDataModel> providersTable;
     public TableView<ContactDataModel> clientsTable;
-//    public Tab providersTab;
-//    public Tab clientsTab;
     public JFXTabPane tabPane;
     public AnchorPane rootContactsPane;
+    public JFXButton addButton;
 
     public ContactsController () {
         rootContactsPane = new AnchorPane();
