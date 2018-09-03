@@ -46,12 +46,12 @@ public class ContactsController implements Initializable {
 
     }
 
-    public void deleteClient(ContactDataModel client) throws IOException {
+    private void deleteClient(ContactDataModel client) throws IOException {
         DBController.getInstance().getDBContactsController().deleteOneClient(client.getObjectId());
         clientsTable.getItems().remove(client);
     }
 
-    public void deleteProvider(ContactDataModel provider) throws IOException {
+    private void deleteProvider(ContactDataModel provider) throws IOException {
         DBController.getInstance().getDBContactsController().deleteOneProvider(provider.getObjectId());
         providersTable.getItems().remove(provider);
 
@@ -364,7 +364,7 @@ public class ContactsController implements Initializable {
 
     }
 
-    private ObservableList toObservableArrayListOfClients(ArrayList<Client> clients) {
+    private ObservableList<ContactDataModel> toObservableArrayListOfClients(ArrayList<Client> clients) {
         ObservableList<ContactDataModel> data = FXCollections.observableArrayList();
         for (Client client : clients) {
             ContactDataModel contactDataModel = new ContactDataModel(client.getObjectId(), client.getName(), client.getSurname(), client.getDni_nif(), client.getTelephone(), client.getCp(), client.getTown(), client.getEmail(), client.getAddress(), client.getAccountNumber());
