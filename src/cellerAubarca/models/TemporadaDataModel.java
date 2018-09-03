@@ -1,5 +1,6 @@
 package cellerAubarca.models;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -35,6 +36,10 @@ public class TemporadaDataModel {
         return p;
     }
 
+    public final Boolean getActive() { return active.get(); }
+
+    public final void setActive(Boolean active) { this.active.set(active); }
+
     public String getObjectId() {
         return objectId.get();
     }
@@ -63,7 +68,7 @@ public class TemporadaDataModel {
         return active.get();
     }
 
-    public SimpleBooleanProperty activeProperty() {
+    public BooleanProperty activeProperty() {
         return active;
     }
 }

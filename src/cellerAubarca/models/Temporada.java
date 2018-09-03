@@ -40,6 +40,7 @@ public class Temporada {
     }
 
     public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Boolean getActive() {

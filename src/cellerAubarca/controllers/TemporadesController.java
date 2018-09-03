@@ -5,13 +5,18 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,6 +48,9 @@ public class TemporadesController implements Initializable {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+        ametllaTable.setEditable(true);
+        olivaTable.setEditable(true);
+        raimTable.setEditable(true);
         loadAmetllaTemporadesTable();
         loadOlivaTemporadesTable();
         loadRaimTemporadesTable();
@@ -59,13 +67,26 @@ public class TemporadesController implements Initializable {
         TableColumn<TemporadaDataModel, String> dateCol = new TableColumn<>("Temporada");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        TableColumn<TemporadaDataModel, Boolean> activeCol = new TableColumn<>("Activa");
-        activeCol.setCellValueFactory(cell -> {
-            TemporadaDataModel p = cell.getValue();
-            return new ReadOnlyBooleanWrapper(p.isActive());
-        });
-        activeCol.setCellFactory(CheckBoxTableCell.forTableColumn(activeCol));
+        /////////////creacio checkbox/////////////////
+        TableColumn<TemporadaDataModel, Boolean> activeCol = new TableColumn<>("Active");
+        activeCol.setCellValueFactory(param -> {
+            TemporadaDataModel person = param.getValue();
 
+            SimpleBooleanProperty booleanProp = new SimpleBooleanProperty(person.isActive());
+
+            // Note: singleCol.setOnEditCommit(): Not work for
+            // CheckBoxTableCell.
+            // When "Single?" column change.
+            booleanProp.addListener((observable, oldValue, newValue) -> person.setActive(newValue));
+            return booleanProp;
+        });
+
+        activeCol.setCellFactory(p -> {
+            CheckBoxTableCell<TemporadaDataModel, Boolean> cell = new CheckBoxTableCell<>();
+            cell.setAlignment(Pos.CENTER);
+            return cell;
+        });
+////////////////////////////////////////////////////////
         ObservableList<TemporadaDataModel> temporadesData = toObservableArrayListOfTemporades(DBController.getInstance().getDBTemporadesController().getTemporadesRaim());
         raimTable.setItems(temporadesData);
         raimTable.getColumns().setAll(idCol, typeCol, dateCol, activeCol);
@@ -83,9 +104,20 @@ public class TemporadesController implements Initializable {
         TableColumn<TemporadaDataModel, String> dateCol = new TableColumn<>("Temporada");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
+        TableColumn<TemporadaDataModel, Boolean> activeCol = new TableColumn<>("Activa");
+        activeCol.setCellValueFactory(new PropertyValueFactory<>("active"));
+        activeCol.setEditable(true);
+        activeCol.setCellValueFactory(cell -> cell.getValue().activeProperty());
+        activeCol.setCellFactory(CheckBoxTableCell.forTableColumn(activeCol));
+        activeCol.setMaxWidth(50);
+        activeCol.setCellValueFactory(cell -> {
+            TemporadaDataModel p = cell.getValue();
+            return new ReadOnlyBooleanWrapper(p.isActive());
+        });
+
         ObservableList<TemporadaDataModel> temporadesData = toObservableArrayListOfTemporades(DBController.getInstance().getDBTemporadesController().getTemporadesOliva());
         olivaTable.setItems(temporadesData);
-        olivaTable.getColumns().setAll(idCol, typeCol, dateCol);
+        olivaTable.getColumns().setAll(idCol, typeCol, dateCol, activeCol);
 
     }
 
@@ -101,15 +133,20 @@ public class TemporadesController implements Initializable {
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         TableColumn<TemporadaDataModel, Boolean> activeCol = new TableColumn<>("Activa");
+        activeCol.setCellValueFactory(new PropertyValueFactory<>("active"));
+        activeCol.setEditable(true);
+        activeCol.setCellValueFactory(cell -> cell.getValue().activeProperty());
+        activeCol.setCellFactory(CheckBoxTableCell.forTableColumn(activeCol));
+        activeCol.setMaxWidth(50);
         activeCol.setCellValueFactory(cell -> {
             TemporadaDataModel p = cell.getValue();
             return new ReadOnlyBooleanWrapper(p.isActive());
         });
-        activeCol.setCellFactory(CheckBoxTableCell.forTableColumn(activeCol));
 
+        System.out.println("SIZE AMETLLA: "+ DBController.getInstance().getDBTemporadesController().getTemporadesAmetlla().size());
         ObservableList<TemporadaDataModel> temporadesData = toObservableArrayListOfTemporades(DBController.getInstance().getDBTemporadesController().getTemporadesAmetlla());
         ametllaTable.setItems(temporadesData);
-        ametllaTable.getColumns().setAll(idCol, typeCol, dateCol);
+        ametllaTable.getColumns().setAll(idCol, typeCol, dateCol, activeCol);
 
     }
 
@@ -155,7 +192,7 @@ public class TemporadesController implements Initializable {
                 JSONObject object = new JSONObject(serverResponse.getMessage());
                 JSONObject newTemporada = object.getJSONObject("temporada");
                 String newId = newTemporada.getString("_id");
-                TemporadaDataModel temporadaDataModel = new TemporadaDataModel(newId, temporada.getTipus(), temporada.getDate().toString(), false);
+                TemporadaDataModel temporadaDataModel = new TemporadaDataModel(newId, temporada.getTipus(), temporada.getDate(), false);
                 if (temporada.getTipus().getCode().equals("AM")) {
                     ametllaTable.getItems().add(temporadaDataModel);
                 } else if (temporada.getTipus().getCode().equals("RA")) {

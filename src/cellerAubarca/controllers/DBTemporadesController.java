@@ -40,7 +40,7 @@ public class DBTemporadesController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("type", temporada.getTipus().getCode());
         jsonObject.put("date", temporada.getDate());
-        jsonObject.put("date", temporada.getActive());
+        jsonObject.put("active", temporada.getActive());
         String json = jsonObject.toString(1);
 
         StringEntity entity = new StringEntity(json);
