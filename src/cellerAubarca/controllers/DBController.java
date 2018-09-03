@@ -27,10 +27,12 @@ public class DBController {
     //TODO: add all the DB controllers
     private DBContactsController dbContactsController;
     private DBProductsController dbProductsController;
+    private DBTemporadesController dbTemporadesController;
 
     private DBController() {
         dbProductsController = new DBProductsController();
         dbContactsController = new DBContactsController();
+        dbTemporadesController = new DBTemporadesController();
     }
 
     public static DBController getInstance() {
@@ -143,5 +145,9 @@ public class DBController {
         String result = IOUtils.toString(body, StandardCharsets.UTF_8);
         System.out.println(result);
         return result;
+    }
+
+    public DBTemporadesController getDBTemporadesController() {
+        return dbTemporadesController;
     }
 }

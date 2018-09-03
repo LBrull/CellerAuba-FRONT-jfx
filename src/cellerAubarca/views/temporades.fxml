@@ -54,7 +54,7 @@
         <JFXDatePicker fx:id="dateSelector" defaultColor="#5d1137" layoutX="104.0" layoutY="98.0" promptText="Tria una data" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="98.0" />
         <Label layoutX="20.0" layoutY="57.0" text="Tipus" />
         <JFXComboBox fx:id="typeSelector" focusColor="#5d1137" layoutX="92.0" layoutY="53.0" promptText="Tria un tipus" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="53.0" />
-        <JFXButton fx:id="saveButton" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="305.0" layoutY="369.0" ripplerFill="#b2923e" style="-fx-background-color: #DFD3B6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <JFXButton fx:id="saveButton" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="305.0" layoutY="369.0" onAction="#saveTemporada" ripplerFill="#b2923e" style="-fx-background-color: #DFD3B6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@../../icons/okIcon_60x60.png" />
@@ -69,7 +69,7 @@
                     <Font size="14.0" />
                 </font>
             </Label>
-            <TableView fx:id="ametllaTable" layoutX="-7.0" layoutY="111.0" minWidth="200.0" prefHeight="381.0" prefWidth="215.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+            <TableView fx:id="ametllaTable" layoutX="-7.0" layoutY="111.0" minWidth="200.0" prefHeight="381.0" prefWidth="215.0" style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                 <columns>
                     <TableColumn editable="false" prefWidth="75.0" text="C1" />
                     <TableColumn prefWidth="75.0" text="C2" />
@@ -77,7 +77,7 @@
             </TableView>
         </AnchorPane>
         <AnchorPane layoutX="493.0" layoutY="101.0" minWidth="220.0" prefWidth="200.0" style="-fx-background-color: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <TableView fx:id="olivaTable" layoutY="149.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+            <TableView fx:id="olivaTable" layoutY="149.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                 <columns>
                     <TableColumn editable="false" prefWidth="75.0" text="C1" />
                     <TableColumn prefWidth="75.0" text="C2" />
@@ -90,7 +90,7 @@
             </Label>
         </AnchorPane>
         <AnchorPane layoutX="220.0" minWidth="220.0" prefWidth="200.0" style="-fx-background-color: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
-            <TableView fx:id="raimTable" layoutY="40.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+            <TableView fx:id="raimTable" layoutY="40.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-selection-bar: #b2923D; -fx-selection-bar-non-focused: #DFD3B6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                 <columns>
                     <TableColumn editable="false" prefWidth="75.0" text="C1" />
                     <TableColumn prefWidth="75.0" text="C2" />

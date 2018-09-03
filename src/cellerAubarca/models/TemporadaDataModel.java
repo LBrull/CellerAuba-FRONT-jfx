@@ -1,0 +1,57 @@
+package cellerAubarca.models;
+
+import javafx.beans.property.SimpleStringProperty;
+
+public class TemporadaDataModel {
+    private final SimpleStringProperty objectId;
+    private final SimpleStringProperty type;
+    private final SimpleStringProperty date;
+
+    public TemporadaDataModel(String objectId, Type type, String date){
+        this.objectId = new SimpleStringProperty(objectId);
+        this.type = new SimpleStringProperty(type.getCode());
+        this.date = new SimpleStringProperty(date);
+    }
+
+    public Temporada toTemporada() {
+        Temporada p = new Temporada();
+        p.setObjectId(getObjectId());
+        switch (type.getName()) {
+            case "AM":
+                p.setTipus(Type.AMETLLA);
+                break;
+            case "RA":
+                p.setTipus(Type.RAIM);
+                break;
+            default:
+                p.setTipus(Type.OLIVA);
+                break;
+        }
+        p.setDate(getDate());
+        return p;
+    }
+
+    public String getObjectId() {
+        return objectId.get();
+    }
+
+    public SimpleStringProperty objectIdProperty() {
+        return objectId;
+    }
+
+    public String getType() {
+        return type.get();
+    }
+
+    public SimpleStringProperty typeProperty() {
+        return type;
+    }
+
+    public String getDate() {
+        return date.get();
+    }
+
+    public SimpleStringProperty dateProperty() {
+        return date;
+    }
+}
