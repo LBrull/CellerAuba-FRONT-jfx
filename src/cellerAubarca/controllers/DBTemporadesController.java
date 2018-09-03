@@ -1,6 +1,5 @@
 package cellerAubarca.controllers;
 
-import cellerAubarca.models.Product;
 import cellerAubarca.models.ServerResponse;
 import cellerAubarca.models.Temporada;
 import cellerAubarca.models.Type;
@@ -29,7 +28,7 @@ public class DBTemporadesController {
     private ArrayList<Temporada> raimTemporades = null;
     private ArrayList<Temporada> olivaTemporades = null;
 
-    public ServerResponse saveTemporada(Temporada temporada) throws IOException, JSONException {
+    ServerResponse saveTemporada(Temporada temporada) throws IOException, JSONException {
         String url = DatabaseUrl +"/api/temporada";
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
@@ -41,6 +40,7 @@ public class DBTemporadesController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("type", temporada.getTipus().getCode());
         jsonObject.put("date", temporada.getDate());
+        jsonObject.put("date", temporada.getActive());
         String json = jsonObject.toString(1);
 
         StringEntity entity = new StringEntity(json);
@@ -69,7 +69,7 @@ public class DBTemporadesController {
 
     }
 
-    public void resetData() {
+    void resetData() {
         temporades = new ArrayList<>();
         ametllesTemporades = new ArrayList<>();
         olivaTemporades = new ArrayList<>();
@@ -82,7 +82,7 @@ public class DBTemporadesController {
         return result;
     }
 
-    public ArrayList<Temporada> getTemporades() throws IOException, JSONException {
+    ArrayList<Temporada> getTemporades() throws IOException, JSONException {
         String url = DatabaseUrl +"/api/temporades";
         CloseableHttpClient client = HttpClients.createDefault();
         HttpGet get = new HttpGet(url);
@@ -96,6 +96,7 @@ public class DBTemporadesController {
 
         if (response.getStatusLine().getStatusCode() == 200) {
             String responseString = new BasicResponseHandler().handleResponse(response);
+            System.out.println("SERVER RESPONSE: "+ responseString);
             JSONArray temporades = new JSONArray(responseString);
             for (int i = 0; i < temporades.length(); ++i) {
                 Temporada c = new Temporada();
@@ -115,6 +116,7 @@ public class DBTemporadesController {
                         break;
                 }
                 c.setDate(jsonClient.getString("date"));
+                c.setActive(jsonClient.getBoolean("active"));
                 list.add(c);
             }
         }
@@ -122,34 +124,36 @@ public class DBTemporadesController {
         return list;
     }
 
-    public void splitTemporades() {
+    void splitTemporades() {
 
         for (Temporada temporade : this.temporades) {
-            if (temporade.getTipus().getCode().equals("AM")) {
-                ametllesTemporades.add(temporade);
-            }
-            else if(temporade.getTipus().getCode().equals("OL")) {
-                olivaTemporades.add(temporade);
-            }
-            else {
-                raimTemporades.add(temporade);
+            switch (temporade.getTipus().getCode()) {
+                case "AM":
+                    ametllesTemporades.add(temporade);
+                    break;
+                case "OL":
+                    olivaTemporades.add(temporade);
+                    break;
+                default:
+                    raimTemporades.add(temporade);
+                    break;
             }
         }
     }
 
-    public ArrayList<Temporada> getTemporadesRaim() {
+    ArrayList<Temporada> getTemporadesRaim() {
         return raimTemporades;
     }
 
-    public ArrayList<Temporada> getTemporadesAmetlla() {
+    ArrayList<Temporada> getTemporadesAmetlla() {
         return ametllesTemporades;
     }
 
-    public ArrayList<Temporada> getTemporadesOliva() {
+    ArrayList<Temporada> getTemporadesOliva() {
         return olivaTemporades;
     }
 
-    public ServerResponse deleteTemporada(String objectId) throws IOException {
+    ServerResponse deleteTemporada(String objectId) throws IOException {
         String url = DatabaseUrl +"/api/temporada/" + objectId;
         CloseableHttpClient client = HttpClients.createDefault();
         HttpDelete delete = new HttpDelete(url);

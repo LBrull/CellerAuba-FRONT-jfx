@@ -4,12 +4,12 @@ import cellerAubarca.models.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.json.JSONException;
@@ -59,9 +59,16 @@ public class TemporadesController implements Initializable {
         TableColumn<TemporadaDataModel, String> dateCol = new TableColumn<>("Temporada");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
+        TableColumn<TemporadaDataModel, Boolean> activeCol = new TableColumn<>("Activa");
+        activeCol.setCellValueFactory(cell -> {
+            TemporadaDataModel p = cell.getValue();
+            return new ReadOnlyBooleanWrapper(p.isActive());
+        });
+        activeCol.setCellFactory(CheckBoxTableCell.forTableColumn(activeCol));
+
         ObservableList<TemporadaDataModel> temporadesData = toObservableArrayListOfTemporades(DBController.getInstance().getDBTemporadesController().getTemporadesRaim());
         raimTable.setItems(temporadesData);
-        raimTable.getColumns().setAll(idCol, typeCol, dateCol);
+        raimTable.getColumns().setAll(idCol, typeCol, dateCol, activeCol);
 
     }
 
@@ -93,6 +100,13 @@ public class TemporadesController implements Initializable {
         TableColumn<TemporadaDataModel, String> dateCol = new TableColumn<>("Temporada");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
+        TableColumn<TemporadaDataModel, Boolean> activeCol = new TableColumn<>("Activa");
+        activeCol.setCellValueFactory(cell -> {
+            TemporadaDataModel p = cell.getValue();
+            return new ReadOnlyBooleanWrapper(p.isActive());
+        });
+        activeCol.setCellFactory(CheckBoxTableCell.forTableColumn(activeCol));
+
         ObservableList<TemporadaDataModel> temporadesData = toObservableArrayListOfTemporades(DBController.getInstance().getDBTemporadesController().getTemporadesAmetlla());
         ametllaTable.setItems(temporadesData);
         ametllaTable.getColumns().setAll(idCol, typeCol, dateCol);
@@ -112,9 +126,6 @@ public class TemporadesController implements Initializable {
         }
         ServerResponse serverResponse = DBController.getInstance().getDBTemporadesController().deleteTemporada(item.getObjectId());
         if (serverResponse.getStatus() == 200) actualizeTables(item);
-        else {
-            System.out.println("SERVER RESPONSE: " + serverResponse.getMessage());
-        }
     }
 
     private void actualizeTables(TemporadaDataModel item) {
@@ -132,21 +143,26 @@ public class TemporadesController implements Initializable {
     }
 
     public void saveTemporada() throws IOException, JSONException {
-        Temporada temporada = new Temporada(typeSelector.getValue(), dateSelector.getValue().toString());
-        ServerResponse serverResponse = DBController.getInstance().getDBTemporadesController().saveTemporada(temporada);
-        if (serverResponse.getStatus() == 200) {
-            JSONObject object = new JSONObject(serverResponse.getMessage());
-            JSONObject newTemporada = object.getJSONObject("temporada");
-            String newId = newTemporada.getString("_id");
-            TemporadaDataModel temporadaDataModel = new TemporadaDataModel(newId, temporada.getTipus(), temporada.getDate().toString());
-            if (temporada.getTipus().getCode().equals("AM")) {
-                ametllaTable.getItems().add(temporadaDataModel);
-            }
-            else if (temporada.getTipus().getCode().equals("RA")) {
-                raimTable.getItems().add(temporadaDataModel);
-            }
-            else {
-                olivaTable.getItems().add(temporadaDataModel);
+        if (typeSelector.getValue() == null || dateSelector.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Escolliu un tipus per la temporada i la seva data d'inici.");
+            alert.showAndWait();
+        }
+        else {
+            Temporada temporada = new Temporada(typeSelector.getValue(), dateSelector.getValue().toString(), false);
+            ServerResponse serverResponse = DBController.getInstance().getDBTemporadesController().saveTemporada(temporada);
+            if (serverResponse.getStatus() == 200) {
+                JSONObject object = new JSONObject(serverResponse.getMessage());
+                JSONObject newTemporada = object.getJSONObject("temporada");
+                String newId = newTemporada.getString("_id");
+                TemporadaDataModel temporadaDataModel = new TemporadaDataModel(newId, temporada.getTipus(), temporada.getDate().toString(), false);
+                if (temporada.getTipus().getCode().equals("AM")) {
+                    ametllaTable.getItems().add(temporadaDataModel);
+                } else if (temporada.getTipus().getCode().equals("RA")) {
+                    raimTable.getItems().add(temporadaDataModel);
+                } else {
+                    olivaTable.getItems().add(temporadaDataModel);
+                }
             }
         }
 
@@ -155,7 +171,7 @@ public class TemporadesController implements Initializable {
     private ObservableList<TemporadaDataModel> toObservableArrayListOfTemporades(ArrayList<Temporada> temporades) {
         ObservableList<TemporadaDataModel> data = FXCollections.observableArrayList();
         for (Temporada temporada : temporades) {
-            TemporadaDataModel temporadaDataModel = new TemporadaDataModel(temporada.getObjectId(), temporada.getTipus(), temporada.getDate());
+            TemporadaDataModel temporadaDataModel = new TemporadaDataModel(temporada.getObjectId(), temporada.getTipus(), temporada.getDate(), temporada.getActive());
             data.add(temporadaDataModel);
         }
         return data;

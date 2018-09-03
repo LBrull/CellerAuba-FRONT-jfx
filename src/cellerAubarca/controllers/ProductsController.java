@@ -96,7 +96,7 @@ public class ProductsController implements Initializable {
             else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText("No pot haver-hi comes!");
-                alert.getDialogPane().setExpandableContent(new ScrollPane(new TextArea("Cambieu la coma per un punt per escriure decimals")));
+                alert.getDialogPane().setExpandableContent(new ScrollPane(new Label("Cambieu la coma per un punt per escriure un nombre amb decimals.")));
                 alert.showAndWait();
             }
         });

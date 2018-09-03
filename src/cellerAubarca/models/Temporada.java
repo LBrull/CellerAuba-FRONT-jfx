@@ -5,12 +5,14 @@ public class Temporada {
     private String objectId;
     private Type tipus;
     private String date;
+    private Boolean active;
 
     public Temporada() {}
 
-    public Temporada (Type tipus, String date) {
+    public Temporada (Type tipus, String date, Boolean active) {
         this.tipus = tipus;
         this.date = date;
+        this.active = active;
     }
 
     public Type getTipus() {
@@ -35,5 +37,12 @@ public class Temporada {
 
     public void setObjectId(String objectId) {
         this.objectId = objectId;
+    }
+
+    public void setActive(boolean active) {
+    }
+
+    public Boolean getActive() {
+        return active;
     }
 }
