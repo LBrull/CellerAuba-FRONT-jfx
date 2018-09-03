@@ -32,10 +32,10 @@ public class ProductsController implements Initializable {
 
     private void setProductsTableData() throws IOException, JSONException {
         TableColumn<ProductDataModel, String> idCol = new TableColumn<>("Codi");
-        idCol.setCellValueFactory(new PropertyValueFactory("objectId"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("objectId"));
 
         TableColumn<ProductDataModel, String> descriptionCol = new TableColumn<>("Descripció");
-        descriptionCol.setCellValueFactory(new PropertyValueFactory("description"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         descriptionCol.setCellFactory(TextFieldTableCell.forTableColumn());
         descriptionCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -76,7 +76,7 @@ public class ProductsController implements Initializable {
         typeCol.setMinWidth(100);
 
         TableColumn<ProductDataModel, String> priceCol = new TableColumn<>("Preu");
-        priceCol.setCellValueFactory(new PropertyValueFactory("price"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         priceCol.setCellFactory(TextFieldTableCell.forTableColumn());
         priceCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -125,9 +125,11 @@ public class ProductsController implements Initializable {
         productsTable.getItems().add(productDataModel);
     }
 
-    public void delete(ActionEvent actionEvent) throws IOException {
-        ProductDataModel product = productsTable.getSelectionModel().getSelectedItem();
-        deleteProduct(product);
+    public void delete() throws IOException {
+        if (productsTable.getSelectionModel().getSelectedItem() != null) {
+            ProductDataModel product = productsTable.getSelectionModel().getSelectedItem();
+            deleteProduct(product);
+        }
     }
 
     private void deleteProduct(ProductDataModel product) throws IOException {

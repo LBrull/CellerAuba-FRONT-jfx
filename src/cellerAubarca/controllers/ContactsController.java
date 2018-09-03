@@ -59,10 +59,10 @@ public class ContactsController implements Initializable {
 
     private void setProvidersTableData() throws IOException, JSONException {
         TableColumn<ContactDataModel, String> idCol = new TableColumn<>("Codi");
-        idCol.setCellValueFactory(new PropertyValueFactory("objectId"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("objectId"));
 
         TableColumn<ContactDataModel, String> nameCol = new TableColumn<>("Nom");
-        nameCol.setCellValueFactory(new PropertyValueFactory("name"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nameCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -78,7 +78,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> surnameCol = new TableColumn<>("Cognom");
-        surnameCol.setCellValueFactory(new PropertyValueFactory("surname"));
+        surnameCol.setCellValueFactory(new PropertyValueFactory<>("surname"));
         surnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         surnameCol.setOnEditCommit(data -> {
             System.out.println("Nuevo Nombre: " +  data.getNewValue());
@@ -94,7 +94,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> dniCol = new TableColumn<>("NIF");
-        dniCol.setCellValueFactory(new PropertyValueFactory("dni_nif"));
+        dniCol.setCellValueFactory(new PropertyValueFactory<>("dni_nif"));
         dniCol.setCellFactory(TextFieldTableCell.forTableColumn());
         dniCol.setOnEditCommit(data -> {
             System.out.println("Nuevo Nombre: " +  data.getNewValue());
@@ -110,7 +110,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> telephoneCol = new TableColumn<>("Telèfon");
-        telephoneCol.setCellValueFactory(new PropertyValueFactory("telephone"));
+        telephoneCol.setCellValueFactory(new PropertyValueFactory<>("telephone"));
         telephoneCol.setCellFactory(TextFieldTableCell.forTableColumn());
         telephoneCol.setOnEditCommit(data -> {
             System.out.println("Nuevo Nombre: " +  data.getNewValue());
@@ -126,7 +126,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> emailCol = new TableColumn<>("Email");
-        emailCol.setCellValueFactory(new PropertyValueFactory("email"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
         emailCol.setOnEditCommit(data -> {
             System.out.println("Nuevo Nombre: " +  data.getNewValue());
@@ -142,7 +142,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> accountNumberCol = new TableColumn<>("Núm. Compte");
-        accountNumberCol.setCellValueFactory(new PropertyValueFactory("accountNumber"));
+        accountNumberCol.setCellValueFactory(new PropertyValueFactory<>("accountNumber"));
         accountNumberCol.setCellFactory(TextFieldTableCell.forTableColumn());
         accountNumberCol.setOnEditCommit(data -> {
             System.out.println("Nuevo Nombre: " +  data.getNewValue());
@@ -158,7 +158,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> cpCol = new TableColumn<>("C.P.");
-        cpCol.setCellValueFactory(new PropertyValueFactory("cp"));
+        cpCol.setCellValueFactory(new PropertyValueFactory<>("cp"));
         cpCol.setCellFactory(TextFieldTableCell.forTableColumn());
         cpCol.setOnEditCommit(data -> {
             System.out.println("Nuevo Nombre: " +  data.getNewValue());
@@ -174,7 +174,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> townCol = new TableColumn<>("Població");
-        townCol.setCellValueFactory(new PropertyValueFactory("town"));
+        townCol.setCellValueFactory(new PropertyValueFactory<>("town"));
         townCol.setCellFactory(TextFieldTableCell.forTableColumn());
         townCol.setOnEditCommit(data -> {
             System.out.println("Nuevo Nombre: " +  data.getNewValue());
@@ -190,7 +190,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> addressCol = new TableColumn<>("Adreça");
-        addressCol.setCellValueFactory(new PropertyValueFactory("address"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         addressCol.setCellFactory(TextFieldTableCell.forTableColumn());
         addressCol.setOnEditCommit(data -> {
             System.out.println("Nuevo : " +  data.getNewValue());
@@ -212,10 +212,10 @@ public class ContactsController implements Initializable {
 
     private void setClientsTableData() throws IOException, JSONException {
         TableColumn<ContactDataModel, String> idCol = new TableColumn<>("Codi");
-        idCol.setCellValueFactory(new PropertyValueFactory("objectId"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("objectId"));
 
         TableColumn<ContactDataModel, String> nameCol = new TableColumn<>("Nom");
-        nameCol.setCellValueFactory(new PropertyValueFactory("name"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nameCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -231,7 +231,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> surnameCol = new TableColumn<>("Cognom");
-        surnameCol.setCellValueFactory(new PropertyValueFactory("surname"));
+        surnameCol.setCellValueFactory(new PropertyValueFactory<>("surname"));
         surnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         surnameCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -247,7 +247,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> dniCol = new TableColumn<>("DNI");
-        dniCol.setCellValueFactory(new PropertyValueFactory("dni_nif"));
+        dniCol.setCellValueFactory(new PropertyValueFactory<>("dni_nif"));
         dniCol.setCellFactory(TextFieldTableCell.forTableColumn());
         dniCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -263,7 +263,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> telephoneCol = new TableColumn<>("Telèfon");
-        telephoneCol.setCellValueFactory(new PropertyValueFactory("telephone"));
+        telephoneCol.setCellValueFactory(new PropertyValueFactory<>("telephone"));
         telephoneCol.setCellFactory(TextFieldTableCell.forTableColumn());
         telephoneCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -279,7 +279,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> emailCol = new TableColumn<>("Email");
-        emailCol.setCellValueFactory(new PropertyValueFactory("email"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
         emailCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -295,7 +295,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> accountNumberCol = new TableColumn<>("Núm. Compte");
-        accountNumberCol.setCellValueFactory(new PropertyValueFactory("accountNumber"));
+        accountNumberCol.setCellValueFactory(new PropertyValueFactory<>("accountNumber"));
         accountNumberCol.setCellFactory(TextFieldTableCell.forTableColumn());
         accountNumberCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -311,7 +311,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> cpCol = new TableColumn<>("C.P.");
-        cpCol.setCellValueFactory(new PropertyValueFactory("cp"));
+        cpCol.setCellValueFactory(new PropertyValueFactory<>("cp"));
         cpCol.setCellFactory(TextFieldTableCell.forTableColumn());
         cpCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -327,7 +327,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> townCol = new TableColumn<>("Població");
-        townCol.setCellValueFactory(new PropertyValueFactory("town"));
+        townCol.setCellValueFactory(new PropertyValueFactory<>("town"));
         townCol.setCellFactory(TextFieldTableCell.forTableColumn());
         townCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -343,7 +343,7 @@ public class ContactsController implements Initializable {
         });
 
         TableColumn<ContactDataModel, String> addressCol = new TableColumn<>("Adreça");
-        addressCol.setCellValueFactory(new PropertyValueFactory("address"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         addressCol.setCellFactory(TextFieldTableCell.forTableColumn());
         addressCol.setOnEditCommit(data -> {
             System.out.println("Nuevo: " +  data.getNewValue());
@@ -384,13 +384,15 @@ public class ContactsController implements Initializable {
 
     public void delete() throws IOException {
         int tabIndex = tabPane.getSelectionModel().getSelectedIndex();
-        if (tabIndex == 0) { //pestanya providers
+        if (tabIndex == 0 && providersTable.getSelectionModel().getSelectedItem()!= null) { //pestanya providers
             ContactDataModel provider = providersTable.getSelectionModel().getSelectedItem();
             deleteProvider(provider);
         }
         else { //pestanya clients
-            ContactDataModel client = clientsTable.getSelectionModel().getSelectedItem();
-            deleteClient(client);
+            if (clientsTable.getSelectionModel().getSelectedItem() != null) {
+                ContactDataModel client = clientsTable.getSelectionModel().getSelectedItem();
+                deleteClient(client);
+            }
         }
     }
 

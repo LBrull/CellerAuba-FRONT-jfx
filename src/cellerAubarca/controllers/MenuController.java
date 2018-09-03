@@ -26,8 +26,7 @@ public class MenuController implements Initializable {
     public JFXButton productsButton;
     public ImageView productsIcon;
     public JFXButton temporadesButton;
-    public ImageView temporadesIcon;
-    @FXML
+    public JFXButton operationsButton;
     private AnchorPane viewHolder;
     public ImageView logoImageView;
     public Label sessioLabel;
@@ -37,6 +36,7 @@ public class MenuController implements Initializable {
 
     private ContactsController contactsController;
     private ProductsController productsController;
+    private TemporadesController temporadesController;
 
 
     public void show() throws IOException {
@@ -77,6 +77,20 @@ public class MenuController implements Initializable {
         contactsStage.show();
     }
 
-    public void temporadesView(ActionEvent actionEvent) {
+    public void temporadesView() throws IOException {
+        Stage temporadesStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/cellerAubarca/views/temporades.fxml"));
+        Parent contactsParent = loader.load();
+        temporadesController = loader.getController();
+        temporadesStage.setTitle("Celler Aubarca - Temporades");
+        temporadesStage.getIcons().add(new Image("/icons/grapeLogo.png"));
+        //set scene to the stage
+        Scene temporadesScene = new Scene(contactsParent, 1100,700);
+        temporadesStage.setScene(temporadesScene);
+        temporadesStage.setResizable(false);
+        temporadesStage.show();
+    }
+
+    public void movementsView(ActionEvent actionEvent) {
     }
 }
