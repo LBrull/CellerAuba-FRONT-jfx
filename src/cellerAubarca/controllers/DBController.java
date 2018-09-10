@@ -4,6 +4,9 @@ import cellerAubarca.models.Client;
 import cellerAubarca.models.Product;
 import cellerAubarca.models.Provider;
 import cellerAubarca.models.ServerResponse;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -13,9 +16,9 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 
 // MAIN DB controller
@@ -102,43 +105,49 @@ public class DBController {
         post.setEntity(entity);
         post.setHeader("Content-Type", "application/json");
 
-        ////////////////////////////////////////
-        HttpResponse response = client.execute( post );
-        InputStream body = response.getEntity().getContent();
-        /////////////////////////////////
+        try {
+            HttpResponse response = client.execute(post);
+            InputStream body = response.getEntity().getContent();
+            ServerResponse res = new ServerResponse();
+            if (response.getStatusLine().getStatusCode() == 404) {
 
-        ServerResponse res = new ServerResponse();
-        if (response.getStatusLine().getStatusCode() == 404) {
+                res.setStatus(404);
+                res.setMessage(readStream(body));
+                client.close();
+                return res;
+            }
 
-            res.setStatus(404);
-            res.setMessage(readStream(body));
-            client.close();
-            return res;
-        }
+            if (response.getStatusLine().getStatusCode() == 400) {
+                res.setStatus(400);
+                res.setMessage(readStream(body));
+                client.close();
+                return res;
+            }
 
-        if (response.getStatusLine().getStatusCode() == 400) {
-            res.setStatus(400);
-            res.setMessage(readStream(body));
-            client.close();
-            return res;
-        }
+            if (response.getStatusLine().getStatusCode() == 200) {
+                String responseString = new BasicResponseHandler().handleResponse(response);
+                JSONObject jsonResponse = new JSONObject(responseString);
+                System.out.println(jsonResponse.toString(1));
+                res.setStatus(200);
+                res.setMessage(responseString);
+                res.setToken(jsonResponse.getString("token"));
+                client.close();
+                return res;
+            }
+            else {
+                res.setStatus(500);
+                res.setMessage(readStream(body));
+                client.close();
+                return res;
+            }
 
-        if (response.getStatusLine().getStatusCode() == 200) {
-            String responseString = new BasicResponseHandler().handleResponse(response);
-            JSONObject jsonResponse = new JSONObject(responseString);
-            System.out.println(jsonResponse.toString(1));
-            res.setStatus(200);
-            res.setMessage(responseString);
-            res.setToken(jsonResponse.getString("token"));
-            client.close();
-            return res;
         }
-        else {
-            res.setStatus(500);
-            res.setMessage(readStream(body));
-            client.close();
-            return res;
+        catch (UnknownHostException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("No hi ha internet!");
+            alert.showAndWait();
         }
+        return null;
     }
 
     private String readStream(InputStream body) throws IOException {

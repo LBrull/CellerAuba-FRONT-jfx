@@ -42,10 +42,8 @@ public class LoginController implements Initializable {
             saveToken(res.getToken());
 
             // Getting menu controller i cedint responsabilitats
-            FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/cellerAubarca/views/menu.fxml"));
-            Parent root = loader.load();
-            MenuController menuController = loader.getController();
-            menuController.show();
+            MenuController menuController = new MenuController();
+            // Show the new stage/window
 
         }
         else if (res.getStatus() == 404) {

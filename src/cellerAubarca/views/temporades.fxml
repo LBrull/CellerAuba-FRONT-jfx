@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cellerAubarca.controllers.TemporadesController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane layoutX="34.0" layoutY="34.0" maxHeight="100.0" prefHeight="100.0" prefWidth="1190.0" style="-fx-background-color: #5f5448;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <effect>
             <DropShadow />
@@ -43,16 +43,23 @@
                 </ImageView>
             </graphic>
         </JFXButton>
+      <JFXButton fx:id="activaButton" buttonType="RAISED" layoutX="915.0" layoutY="21.0" onAction="#activaTemporada" ripplerFill="#b2923e" style="-fx-background-color: #DFD3B6;" text="Activar temporada" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="20.0">
+         <graphic>
+             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                 <Image url="@../../icons/okIcon_60x60.png" />
+             </ImageView>
+         </graphic>
+      </JFXButton>
     </AnchorPane>
-    <AnchorPane layoutX="44.0" layoutY="150.0" maxWidth="386.0" minWidth="300.0" prefHeight="421.0" prefWidth="386.0" style="-fx-background-color: #DFD3B6;" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="710.0" AnchorPane.topAnchor="150.0">
+    <AnchorPane layoutX="44.0" layoutY="345.0" maxWidth="388.0" minWidth="300.0" prefHeight="245.0" prefWidth="388.0" style="-fx-background-color: #DFD3B6;" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="692.0" AnchorPane.topAnchor="345.0">
         <Label layoutX="20.0" layoutY="104.0" text="Data inici" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="104.0" />
         <Label layoutX="14.0" layoutY="14.0" text="Creació de temporades" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
             <font>
-                <Font size="14.0" />
+                <Font name="System Bold" size="14.0" />
             </font>
         </Label>
         <JFXDatePicker fx:id="dateSelector" defaultColor="#5d1137" layoutX="104.0" layoutY="98.0" promptText="Tria una data" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="98.0" />
-        <Label layoutX="20.0" layoutY="57.0" text="Tipus" />
+        <Label layoutX="20.0" layoutY="57.0" text="Tipus" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="57.0" />
         <JFXComboBox fx:id="typeSelector" focusColor="#5d1137" layoutX="92.0" layoutY="53.0" promptText="Tria un tipus" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="53.0" />
         <JFXButton fx:id="saveButton" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="305.0" layoutY="369.0" onAction="#saveTemporada" ripplerFill="#b2923e" style="-fx-background-color: #DFD3B6;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
             <graphic>
@@ -102,5 +109,18 @@
                 </font>
             </Label>
         </AnchorPane>
+    </AnchorPane>
+    <AnchorPane layoutX="20.0" layoutY="150.0" maxWidth="388.0" minWidth="300.0" prefHeight="184.0" prefWidth="388.0" style="-fx-background-color: #DFD3B6;" AnchorPane.bottomAnchor="376.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="150.0">
+        <Label layoutX="20.0" layoutY="101.0" text="Raïm:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="101.0" />
+        <Label layoutX="14.0" layoutY="14.0" text="Temporades actives" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+           <font>
+               <Font name="System Bold" size="14.0" />
+           </font>
+        </Label>
+        <Label layoutX="20.0" layoutY="57.0" text="Ametlla:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="57.0" />
+        <Label layoutX="20.0" layoutY="146.0" text="Oliva:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="146.0" />
+        <Label fx:id="ametllaActiva" layoutX="81.0" layoutY="57.0" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="57.0" />
+        <Label fx:id="raimActiva" layoutX="81.0" layoutY="101.0" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="101.0" />
+        <Label fx:id="olivaActiva" layoutX="81.0" layoutY="146.0" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="146.0" />
     </AnchorPane>
 </AnchorPane>

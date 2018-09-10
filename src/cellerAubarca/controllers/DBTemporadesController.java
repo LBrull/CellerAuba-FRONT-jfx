@@ -27,6 +27,9 @@ public class DBTemporadesController {
     private ArrayList<Temporada> ametllesTemporades = null;
     private ArrayList<Temporada> raimTemporades = null;
     private ArrayList<Temporada> olivaTemporades = null;
+    private Temporada activaAmetlla = null;
+    private Temporada activaRaim = null;
+    private Temporada activaOliva = null;
 
     ServerResponse saveTemporada(Temporada temporada) throws IOException, JSONException {
         String url = DatabaseUrl +"/api/temporada";
@@ -130,12 +133,15 @@ public class DBTemporadesController {
             switch (temporade.getTipus().getCode()) {
                 case "AM":
                     ametllesTemporades.add(temporade);
+                    if (temporade.getActive()) activaAmetlla = temporade;
                     break;
                 case "OL":
                     olivaTemporades.add(temporade);
+                    if (temporade.getActive()) activaOliva = temporade;
                     break;
                 default:
                     raimTemporades.add(temporade);
+                    if (temporade.getActive()) activaRaim = temporade;
                     break;
             }
         }
@@ -180,5 +186,14 @@ public class DBTemporadesController {
             client.close();
             return res;
         }
+    }
+
+    public ArrayList<Temporada> getTemporadesActives() throws IOException, JSONException {
+        getTemporades();
+        ArrayList<Temporada> temps = new ArrayList<>();
+        temps.add(activaAmetlla);
+        temps.add(activaOliva);
+        temps.add(activaRaim);
+        return temps;
     }
 }

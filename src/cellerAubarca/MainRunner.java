@@ -1,12 +1,10 @@
 package cellerAubarca;
 
-import cellerAubarca.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -18,6 +16,9 @@ public class MainRunner extends Application {
     private static BorderPane rootLayout;
     private static String session;
     private static Scene mainScene;
+    private static String activeRaim = "";
+    private static String activeOliva = "";
+    private static String activeAmetlla = "";
 
     public static void main(String[] args) {
         launch(args);
@@ -37,6 +38,30 @@ public class MainRunner extends Application {
 
     public static Scene getScene() {
         return mainScene;
+    }
+
+    public static void setRaimActive(String s) {
+        activeRaim = s;
+    }
+
+    public static void setOlivaActive(String s) {
+        activeOliva = s;
+    }
+
+    public static void setAmetllaActive(String s) {
+        activeAmetlla = s;
+    }
+
+    public static String getActiveRaim() {
+        return activeRaim;
+    }
+
+    public static String getActiveOliva() {
+        return activeOliva;
+    }
+
+    public static String getActiveAmetlla() {
+        return activeAmetlla;
     }
 
 
