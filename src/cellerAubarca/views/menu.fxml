@@ -88,14 +88,14 @@
       <center>
           <GridPane alignment="CENTER" hgap="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="450.0" prefWidth="450.0" vgap="15.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="449.0" minWidth="10.0" prefWidth="289.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="683.0" minWidth="10.0" prefWidth="289.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="683.0" minWidth="10.0" prefWidth="289.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints vgrow="SOMETIMES" />
                   <RowConstraints vgrow="SOMETIMES" />
-               <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+               <RowConstraints vgrow="SOMETIMES" />
               </rowConstraints>
               <BorderPane.margin>
                   <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
