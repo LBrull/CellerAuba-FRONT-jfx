@@ -15,12 +15,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.concurrent.CompletableFuture;
+
 
 public class MenuController implements Initializable {
 
@@ -37,7 +36,6 @@ public class MenuController implements Initializable {
     public ImageView olivaTempImage;
     public ImageView ametllaTempImage;
     public ImageView raimTempImage;
-    @FXML
     private AnchorPane viewHolder;
     public ImageView logoImageView;
     public Label sessioLabel;
@@ -59,7 +57,6 @@ public class MenuController implements Initializable {
             MainRunner.getMainStage().setTitle("Celler Aubarca - Menú");
             MainRunner.getMainStage().getIcons().add(new Image("/icons/grapeLogo.png"));
             MainRunner.getMainStage().setResizable(true);
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -161,17 +158,18 @@ public class MenuController implements Initializable {
     }
 
     public void setAmetlla(String date) {
-        System.out.println("menuController ara: "+ this);
-        System.out.println("intentant fer set de: " + date);
         ametllaTemp.setText(date);
+        ametllaTempImage.setVisible(false);
     }
 
     public void setRaim(String date) {
         raimTemp.setText(date);
+        raimTempImage.setVisible(false);
     }
 
     public void setOliva(String date) {
         olivaTemp.setText(date);
+        olivaTempImage.setVisible(false);
     }
 
     public void deleteTemporadaAmetlla() {

@@ -43,9 +43,9 @@
       <Label fx:id="ametllaTemp" layoutX="155.0" layoutY="111.0" text="Label" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="111.0" />
       <Label fx:id="olivaTemp" layoutX="141.0" layoutY="141.0" text="Label" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="141.0" />
       <Label fx:id="raimTemp" layoutX="130.0" layoutY="171.0" text="Label" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="171.0" />
-      <ImageView fx:id="olivaTempImage" fitHeight="18.0" fitWidth="18.0" layoutX="216.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="137.0" />
-      <ImageView fx:id="ametllaTempImage" fitHeight="18.0" fitWidth="18.0" layoutX="215.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="107.0" />
-      <ImageView fx:id="raimTempImage" fitHeight="18.0" fitWidth="18.0" layoutX="216.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="167.0" />
+      <ImageView fx:id="olivaTempImage" fitHeight="18.0" fitWidth="18.0" layoutX="222.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="141.0" />
+      <ImageView fx:id="ametllaTempImage" fitHeight="18.0" fitWidth="18.0" layoutX="222.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="111.0" />
+      <ImageView fx:id="raimTempImage" fitHeight="18.0" fitWidth="18.0" layoutX="222.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="171.0" />
     </AnchorPane>
     <AnchorPane prefHeight="170.0" prefWidth="1000.0" style="-fx-background-color: #5f5448;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Label layoutX="223.0" layoutY="53.0" text="Celler" textFill="#b2923e">
@@ -136,7 +136,14 @@
                      </ImageView>
                  </graphic>
               </JFXButton>
-              <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+              <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Consultes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/statistics_100x100.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
               <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
               <JFXButton alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
           </GridPane>

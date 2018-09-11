@@ -31,9 +31,6 @@ public class TemporadesController implements Initializable {
     public TableView<TemporadaDataModel> olivaTable;
     public TableView<TemporadaDataModel> raimTable;
     public JFXButton activaButton;
-    public Label ametllaActiva;
-    public Label raimActiva;
-    public Label olivaActiva;
 
     private MenuController menuController;
     private Stage temporadesStage;
@@ -41,7 +38,6 @@ public class TemporadesController implements Initializable {
     public TemporadesController (MenuController menuController) {
 
         // We received the first controller, now let's make it usable throughout this controller.
-        System.out.println("menuController: "+ menuController);
         this.menuController = menuController;
         // Create the new stage
         temporadesStage = new Stage();
@@ -104,6 +100,12 @@ public class TemporadesController implements Initializable {
         raimTable.setItems(temporadesData);
         raimTable.getColumns().setAll(idCol, typeCol, dateCol, activeCol);
 
+        raimTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                ametllaTable.getSelectionModel().clearSelection();
+                olivaTable.getSelectionModel().clearSelection();
+            }
+        });
     }
 
     private void loadOlivaTemporadesTable() {
@@ -125,6 +127,12 @@ public class TemporadesController implements Initializable {
         olivaTable.setItems(temporadesData);
         olivaTable.getColumns().setAll(idCol, typeCol, dateCol, activeCol);
 
+        olivaTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                raimTable.getSelectionModel().clearSelection();
+                ametllaTable.getSelectionModel().clearSelection();
+            }
+        });
     }
 
     private void loadAmetllaTemporadesTable() {
@@ -142,31 +150,35 @@ public class TemporadesController implements Initializable {
         activeCol.setCellValueFactory(cellData -> cellData.getValue().activeProperty());
         activeCol.setCellFactory(CheckBoxTableCell.forTableColumn(param -> ametllaTable.getItems().get(param).activeProperty()));
 
-        System.out.println("SIZE AMETLLA: "+ DBController.getInstance().getDBTemporadesController().getTemporadesAmetlla().size());
         ObservableList<TemporadaDataModel> temporadesData = toObservableArrayListOfTemporades(DBController.getInstance().getDBTemporadesController().getTemporadesAmetlla());
         ametllaTable.setItems(temporadesData);
         ametllaTable.getColumns().setAll(idCol, typeCol, dateCol, activeCol);
 
+        ametllaTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                raimTable.getSelectionModel().clearSelection();
+                olivaTable.getSelectionModel().clearSelection();
+            }
+        });
+
     }
 
     public void delete() throws IOException {
-        TemporadaDataModel raimItem = raimTable.getSelectionModel().getSelectedItem();
         TemporadaDataModel olivaItem = olivaTable.getSelectionModel().getSelectedItem();
+        TemporadaDataModel raimItem = raimTable.getSelectionModel().getSelectedItem();
         TemporadaDataModel ametllaItem = ametllaTable.getSelectionModel().getSelectedItem();
+
         if (raimItem != null) {
-            System.out.println("raim item: " + raimItem.getDate());
-            //deleteItem(raimItem);
-            //if (raimItem.isActive()) menuController.deleteTemporadaRaim();
+            deleteItem(raimItem);
+            if (raimItem.isActive()) menuController.deleteTemporadaRaim();
         }
         else if (olivaItem != null) {
-            System.out.println("oliva item: " + olivaItem.getDate());
-//            deleteItem(olivaItem);
-//            if (olivaItem.isActive()) menuController.deleteTemporadaOliva();
+            deleteItem(olivaItem);
+            if (olivaItem.isActive()) menuController.deleteTemporadaOliva();
         }
         else if (ametllaItem != null){
-            System.out.println("ametlla item: " + ametllaItem.getDate());
-//            deleteItem(ametllaItem);
-//            if (ametllaItem.isActive()) menuController.deleteTemporadaAmetlla();
+            deleteItem(ametllaItem);
+            if (ametllaItem.isActive()) menuController.deleteTemporadaAmetlla();
         }
     }
 
@@ -178,17 +190,17 @@ public class TemporadesController implements Initializable {
     private void actualizeTables(TemporadaDataModel item) {
         switch (item.getType()) {
             case "AM":
-                if (item.getActive()) ametllaActiva.setText("");
+                if (item.getActive())
                 ametllaTable.getItems().remove(item);
                 MainRunner.setAmetllaActive("");
                 break;
             case "OL":
-                if (item.getActive()) olivaActiva.setText("");
+                if (item.getActive())
                 olivaTable.getItems().remove(item);
                 MainRunner.setOlivaActive("");
                 break;
             default:
-                if (item.getActive()) raimActiva.setText("");
+                if (item.getActive())
                 raimTable.getItems().remove(item);
                 MainRunner.setRaimActive("");
                 break;
@@ -230,30 +242,30 @@ public class TemporadesController implements Initializable {
         return data;
     }
 
-    public void activaTemporada() {
-        if (ametllaTable.getSelectionModel().getSelectedItem() != null && (ametllaTable.getSelectionModel().getFocusedIndex() == ametllaTable.getSelectionModel().getSelectedIndex())) {
+    public void activaTemporada() throws IOException, JSONException {
+        if (ametllaTable.getSelectionModel().getSelectedItem() != null) {
             TemporadaDataModel item = ametllaTable.getSelectionModel().getSelectedItem();
-            ametllaActiva.setText(item.getDate());
             //TODO: actualitzar active i inactive de la BD
             actualitzaActiveTable(ametllaTable);
+            DBController.getInstance().getDBTemporadesController().editTemporada(item);
 
             //TODO: passar valor al menu
             menuController.setAmetlla(ametllaTable.getSelectionModel().getSelectedItem().getDate());
         }
-        if (raimTable.getSelectionModel().getSelectedItem() != null && (raimTable.getSelectionModel().getFocusedIndex() == raimTable.getSelectionModel().getSelectedIndex())) {
+        if (raimTable.getSelectionModel().getSelectedItem() != null) {
             TemporadaDataModel item = raimTable.getSelectionModel().getSelectedItem();
-            raimActiva.setText(item.getDate());
             //TODO: actualitzar active i inactive de la BD
             actualitzaActiveTable(raimTable);
+            DBController.getInstance().getDBTemporadesController().editTemporada(item);
 
             //TODO: passar valor al menu
             menuController.setRaim(raimTable.getSelectionModel().getSelectedItem().getDate());
         }
-        if (olivaTable.getSelectionModel().getSelectedItem() != null && (olivaTable.getSelectionModel().getFocusedIndex() == olivaTable.getSelectionModel().getSelectedIndex())) {
+        if (olivaTable.getSelectionModel().getSelectedItem() != null) {
             TemporadaDataModel item = olivaTable.getSelectionModel().getSelectedItem();
-            olivaActiva.setText(item.getDate());
             //TODO: actualitzar active i inactive de la BD
             actualitzaActiveTable(olivaTable);
+            DBController.getInstance().getDBTemporadesController().editTemporada(item);
 
             //TODO: passar valor al menu
             menuController.setOliva(olivaTable.getSelectionModel().getSelectedItem().getDate());

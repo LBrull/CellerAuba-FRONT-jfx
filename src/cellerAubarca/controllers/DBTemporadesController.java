@@ -2,12 +2,10 @@ package cellerAubarca.controllers;
 
 import cellerAubarca.models.ServerResponse;
 import cellerAubarca.models.Temporada;
+import cellerAubarca.models.TemporadaDataModel;
 import cellerAubarca.models.Type;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -17,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.prefs.Preferences;
@@ -195,5 +194,44 @@ public class DBTemporadesController {
         temps.add(activaOliva);
         temps.add(activaRaim);
         return temps;
+    }
+
+    public ServerResponse editTemporada(TemporadaDataModel temporada) throws JSONException, IOException {
+        String url = DatabaseUrl +"/api/temporada/" + temporada.getObjectId();
+        System.out.println("ID  QUE ENVIO: "+ temporada.getObjectId());
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpPut put = new HttpPut(url);
+
+        put.setHeader("Content-Type", "application/json");
+        String token = "Bearer "+ Preferences.userRoot().get("token", null);
+        put.setHeader("authorization", token);
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("type", temporada.getType());
+        jsonObject.put("date", temporada.getDate());
+        jsonObject.put("active", temporada.getActive());
+        String json = jsonObject.toString(1);
+
+        StringEntity entity = new StringEntity(json);
+        put.setEntity(entity);
+
+        CloseableHttpResponse response = client.execute(put);
+        InputStream body = response.getEntity().getContent();
+        ServerResponse res = new ServerResponse();
+
+        if (response.getStatusLine().getStatusCode() == 200) {
+            String responseString = new BasicResponseHandler().handleResponse(response);
+            res.setStatus(200);
+            res.setMessage(responseString);
+            client.close();
+            System.out.println("OBJECTE QUE RETORNA EL SERVER: "+ res.getMessage());
+            return res;
+        }
+        else {
+            res.setStatus(response.getStatusLine().getStatusCode());
+            res.setMessage(readStream(body));
+            client.close();
+            return res;
+        }
     }
 }
