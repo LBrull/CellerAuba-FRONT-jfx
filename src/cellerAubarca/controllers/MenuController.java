@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.json.JSONException;
 import java.io.IOException;
@@ -39,6 +40,10 @@ public class MenuController implements Initializable {
     private AnchorPane viewHolder;
     public ImageView logoImageView;
     public Label sessioLabel;
+    public AnchorPane subMenuPane;
+    public JFXButton inButton;
+    public JFXButton outButton;
+    public GridPane movementsSubMenu;
 
     private ContactsController contactsController;
     private ProductsController productsController;
@@ -102,6 +107,14 @@ public class MenuController implements Initializable {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+
+        operationsButton.setOnAction(event -> {
+            if (!movementsSubMenu.isVisible())
+            movementsSubMenu.setVisible(true);
+            else {
+                movementsSubMenu.setVisible(false);
+            }
+        });
     }
 
     private void loadTemporades() throws IOException, JSONException {
