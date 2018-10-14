@@ -11,15 +11,12 @@ public class AlbaraDataModel {
     private final SimpleStringProperty client;
     private final SimpleStringProperty date;
     private final SimpleStringProperty type;
-    private Map<Product, Double> products;
 
-
-    public AlbaraDataModel(SimpleStringProperty objectId, SimpleStringProperty provider, SimpleStringProperty client, SimpleStringProperty date, SimpleStringProperty type, Map<Product, Double> products) {
-        this.objectId = objectId;
-        this.provider = provider;
-        this.client = client;
-        this.date = date;
-        this.type = type;
-        this.products = products;
+    public AlbaraDataModel(String objectId, String provider, String client, String date, String type) {
+        this.objectId = new SimpleStringProperty(objectId);
+        this.provider = new SimpleStringProperty(provider);
+        this.client = new SimpleStringProperty(client);
+        this.date = new SimpleStringProperty(date);
+        this.type = new SimpleStringProperty(type);
     }
 }

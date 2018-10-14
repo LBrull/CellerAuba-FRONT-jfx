@@ -5,8 +5,6 @@ import cellerAubarca.models.Product;
 import cellerAubarca.models.Provider;
 import cellerAubarca.models.ServerResponse;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -31,11 +29,13 @@ public class DBController {
     private DBContactsController dbContactsController;
     private DBProductsController dbProductsController;
     private DBTemporadesController dbTemporadesController;
+    private DBAlbaransController dbAlbaransController;
 
     private DBController() {
         dbProductsController = new DBProductsController();
         dbContactsController = new DBContactsController();
         dbTemporadesController = new DBTemporadesController();
+        dbAlbaransController = new DBAlbaransController();
     }
 
     public static DBController getInstance() {
@@ -158,5 +158,9 @@ public class DBController {
 
     public DBTemporadesController getDBTemporadesController() {
         return dbTemporadesController;
+    }
+
+    public DBAlbaransController getDBAlbaransController() {
+        return dbAlbaransController;
     }
 }

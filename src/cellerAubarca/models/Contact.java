@@ -107,4 +107,8 @@ public abstract class Contact {
     public void setObjectId(String objectId) {
         this.objectId = objectId;
     }
+
+    public String getFullName() {
+        return this.name + " " + this.surname;
+    }
 }

@@ -3,18 +3,17 @@ package cellerAubarca.controllers;
 import cellerAubarca.models.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AlbaransController implements Initializable {
@@ -27,33 +26,46 @@ public class AlbaransController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         inAlbaransTable.setPlaceholder(new Label("CARREGANT ALBARANS D'ENTRADA ..."));
         Platform.runLater(() -> {
-            setInAlbaransTableData();
+            try {
+                setInAlbaransTableData();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
         });
     }
 
-    private void setInAlbaransTableData() {
+    private void setInAlbaransTableData() throws IOException, JSONException {
         TableColumn<Albara, String> idCol = new TableColumn<>("Codi");
         idCol.setCellValueFactory(new PropertyValueFactory<>("objectId"));
 
-        TableColumn<AlbaraDataModel, String> provider = new TableColumn<>("Proveïdor");
-        provider.setCellValueFactory(new PropertyValueFactory<>("provider"));
-        provider.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<AlbaraDataModel, String> providerCol = new TableColumn<>("Proveïdor");
+        providerCol.setCellValueFactory(new PropertyValueFactory<>("provider"));
+        providerCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        TableColumn<AlbaraDataModel, String> client = new TableColumn<>("Client");
-        provider.setCellValueFactory(new PropertyValueFactory<>("client"));
-        provider.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<AlbaraDataModel, String> clientCol = new TableColumn<>("Client");
+        clientCol.setCellValueFactory(new PropertyValueFactory<>("client"));
+        clientCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        TableColumn<AlbaraDataModel, String> type = new TableColumn<>("Tipus");
-        type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        type.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<AlbaraDataModel, String> typeCol = new TableColumn<>("Tipus");
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        typeCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        TableColumn<AlbaraDataModel, String> date = new TableColumn<>("Data");
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        date.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<AlbaraDataModel, String> dateCol = new TableColumn<>("Data");
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        dateCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
-        ObservableList<AlbaraDataModel> albaransData = toObservableArrayListOfAlbarans(DBController.getInstance().getDBProductsController().getProducts());
-        productsTable.setItems(providersData);
-        productsTable.getColumns().setAll(idCol, descriptionCol, typeCol, priceCol);
+        ObservableList<AlbaraDataModel> albaransData = toObservableArrayListOfAlbarans(DBController.getInstance().getDBAlbaransController().getInAlbarans());
+        inAlbaransTable.setItems(albaransData);
+        inAlbaransTable.getColumns().setAll(idCol, providerCol, clientCol, typeCol, dateCol);
+    }
+
+    private ObservableList<AlbaraDataModel> toObservableArrayListOfAlbarans(ArrayList<Albara> albarans) {
+        ObservableList<AlbaraDataModel> data = FXCollections.observableArrayList();
+        for (Albara albara : albarans) {
+            AlbaraDataModel albaraDataModel = new AlbaraDataModel(albara.getObjectId(), albara.getProvider().getFullName(), albara.getClient().getFullName(), albara.getType().getCode(), albara.getDate().toString());
+            data.add(albaraDataModel);
+        }
+        return data;
     }
 }
