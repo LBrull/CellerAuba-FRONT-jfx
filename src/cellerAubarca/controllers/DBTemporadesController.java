@@ -188,12 +188,18 @@ public class DBTemporadesController {
     }
 
     public ArrayList<Temporada> getTemporadesActives() throws IOException, JSONException {
-        getTemporades();
-        ArrayList<Temporada> temps = new ArrayList<>();
-        temps.add(activaAmetlla);
-        temps.add(activaOliva);
-        temps.add(activaRaim);
-        return temps;
+        ArrayList<Temporada> temps = getTemporades();
+        ArrayList<Temporada> activeTemps = new ArrayList<>();
+        int found = 0;
+        int l = 0;
+        while(found != 3 || l < temps.size()) {
+            if (temps.get(l).getActive()) {
+                activeTemps.add(temps.get(l));
+                found ++;
+            }
+            l++;
+        }
+        return activeTemps;
     }
 
     public ServerResponse editTemporada(TemporadaDataModel temporada) throws JSONException, IOException {

@@ -2,6 +2,7 @@ package cellerAubarca.controllers;
 
 import cellerAubarca.models.*;
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,12 +23,14 @@ public class ProductsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        try {
-            setProductsTableData();
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
+        productsTable.setPlaceholder(new Label("CARREGANT ELS PRODUCTES ..."));
+        Platform.runLater(() -> {
+            try {
+                setProductsTableData();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void setProductsTableData() throws IOException, JSONException {
@@ -38,8 +41,6 @@ public class ProductsController implements Initializable {
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         descriptionCol.setCellFactory(TextFieldTableCell.forTableColumn());
         descriptionCol.setOnEditCommit(data -> {
-            System.out.println("Nuevo: " +  data.getNewValue());
-            System.out.println("Antiguo: " + data.getOldValue());
             ProductDataModel p = data.getRowValue();
             p.setDescription(data.getNewValue());
             Product newProduct = p.toProduct();
@@ -79,8 +80,6 @@ public class ProductsController implements Initializable {
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         priceCol.setCellFactory(TextFieldTableCell.forTableColumn());
         priceCol.setOnEditCommit(data -> {
-            System.out.println("Nuevo: " +  data.getNewValue());
-            System.out.println("Antiguo: " + data.getOldValue());
 
             if (!data.getNewValue().contains(",")) {
 

@@ -88,8 +88,9 @@
       <center>
           <GridPane alignment="CENTER" hgap="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="450.0" prefWidth="450.0" vgap="15.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" />
-                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+               <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
                   <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
@@ -114,7 +115,7 @@
                      <Insets />
                  </GridPane.margin>
               </JFXButton>
-              <JFXButton fx:id="productsButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Productes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+              <JFXButton fx:id="productsButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Productes" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                  <graphic>
                      <ImageView fx:id="productsIcon" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                          <Image url="@../../icons/products_100x100.png" />
@@ -122,14 +123,14 @@
 
                  </graphic>
               </JFXButton>
-              <JFXButton fx:id="temporadesButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Temporades" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+              <JFXButton fx:id="temporadesButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Temporades" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                  <graphic>
                      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                          <Image url="@../../icons/calendar_100x100.png" />
                      </ImageView>
                  </graphic>
               </JFXButton>
-              <JFXButton fx:id="operationsButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Moviments" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+              <JFXButton fx:id="operationsButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Albarans" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                  <graphic>
                      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                          <Image url="@../../icons/inout_100x100.png" />
@@ -142,22 +143,22 @@
                        <Image url="@../../icons/statistics_100x100.png" />
                    </ImageView>
                </graphic></JFXButton>
-              <GridPane fx:id="movementsSubMenu" vgap="10.0" visible="false" GridPane.rowIndex="2">
+              <GridPane fx:id="movementsSubMenu" vgap="10.0" visible="false" GridPane.columnIndex="2">
                   <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   </columnConstraints>
                   <rowConstraints>
-                      <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                      <RowConstraints percentHeight="50.0" vgrow="SOMETIMES" />
+                      <RowConstraints percentHeight="50.0" vgrow="SOMETIMES" />
                   </rowConstraints>
-                  <JFXButton fx:id="inButton" alignment="CENTER" buttonType="RAISED" graphicTextGap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Entrada">
+                  <JFXButton fx:id="inButton" alignment="CENTER" buttonType="RAISED" graphicTextGap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Entrada" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                       <graphic>
                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                               <Image url="@../../icons/in.png" />
                           </ImageView>
                       </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="outButton" alignment="CENTER" buttonType="RAISED" graphicTextGap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Sortida" GridPane.rowIndex="1">
+                  <JFXButton fx:id="outButton" alignment="CENTER" buttonType="RAISED" graphicTextGap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="100.0" ripplerFill="#b2923e" style="-fx-background-color: #dfd3b6;" text="Sortida" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                       <graphic>
                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                               <Image url="@../../icons/out.png" />

@@ -5,6 +5,7 @@ import cellerAubarca.models.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -63,21 +64,27 @@ public class TemporadesController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ametllaTable.setPlaceholder(new Label("CARREGANT TEMPORADES ..."));
+        raimTable.setPlaceholder(new Label("CARREGANT TEMPORADES ..."));
+        olivaTable.setPlaceholder(new Label("CARREGANT TEMPORADES ..."));
         ArrayList<Type> tipus = new ArrayList<>();
         tipus.add(Type.AMETLLA);
         tipus.add(Type.RAIM);
         tipus.add(Type.OLIVA);
         typeSelector.getItems().addAll(tipus);
-        try {
-            DBController.getInstance().getDBTemporadesController().resetData();
-            DBController.getInstance().getDBTemporadesController().getTemporades();
-            DBController.getInstance().getDBTemporadesController().splitTemporades();
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
-        loadAmetllaTemporadesTable();
-        loadOlivaTemporadesTable();
-        loadRaimTemporadesTable();
+        DBController.getInstance().getDBTemporadesController().resetData();
+        Platform.runLater(() -> {
+            try {
+                DBController.getInstance().getDBTemporadesController().getTemporades();
+                DBController.getInstance().getDBTemporadesController().splitTemporades();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        });
+        Platform.runLater(this::loadAmetllaTemporadesTable);
+        Platform.runLater(this::loadOlivaTemporadesTable);
+        Platform.runLater(this::loadRaimTemporadesTable);
+
     }
 
     private void loadRaimTemporadesTable() {

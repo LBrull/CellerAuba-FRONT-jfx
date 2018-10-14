@@ -6,9 +6,11 @@ import cellerAubarca.models.Provider;
 import cellerAubarca.models.ServerResponse;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,13 +39,23 @@ public class ContactsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            setClientsTableData();
-            setProvidersTableData();
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
+        providersTable.setPlaceholder(new Label("CARREGANT ELS PROVEÏDORS ..."));
+        clientsTable.setPlaceholder(new Label("CARREGANT ELS CLIENTS ..."));
+        Platform.runLater(() -> {
+            try {
+                setClientsTableData();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        });
 
+        Platform.runLater(() -> {
+            try {
+                setProvidersTableData();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void deleteClient(ContactDataModel client) throws IOException {

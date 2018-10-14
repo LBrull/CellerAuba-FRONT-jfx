@@ -3,6 +3,7 @@ package cellerAubarca.controllers;
 import cellerAubarca.MainRunner;
 import cellerAubarca.models.Temporada;
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +50,7 @@ public class MenuController implements Initializable {
     private ProductsController productsController;
     private TemporadesController temporadesController;
     private MenuController menuController;
+    private AlbaransController inAlbaransController;
 
     public MenuController() {
         try {
@@ -115,6 +117,51 @@ public class MenuController implements Initializable {
                 movementsSubMenu.setVisible(false);
             }
         });
+
+        inButton.setOnAction(event -> {
+            try {
+                inAlbaransView();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    showTemporades();
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void inAlbaransView() throws IOException {
+        Stage inAlbaransStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/cellerAubarca/views/inAlbarans.fxml"));
+        Parent contactsParent = loader.load();
+        inAlbaransController = loader.getController();
+        inAlbaransStage.setTitle("Celler Aubarca - Albarans d'entrada");
+        inAlbaransStage.getIcons().add(new Image("/icons/grapeLogo.png"));
+        //set scene to the stage
+        Scene inAlbaransScene = new Scene(contactsParent, 1200,768);
+        inAlbaransStage.setScene(inAlbaransScene);
+        inAlbaransStage.show();
+    }
+
+    private void showTemporades() throws IOException, JSONException {
+        ArrayList<Temporada> temps = DBController.getInstance().getDBTemporadesController().getTemporadesActives();
+        for (Temporada temp : temps) {
+            if (temp.getTipus().getCode().equals("AM")) {
+                ametllaTemp.setText(temp.getDate());
+            } else if (temp.getTipus().getCode().equals("RA")) {
+                raimTemp.setText(temp.getDate());
+            } else {
+                olivaTemp.setText(temp.getDate());
+            }
+        }
     }
 
     private void loadTemporades() throws IOException, JSONException {
@@ -199,4 +246,5 @@ public class MenuController implements Initializable {
         olivaTemp.setText("");
         olivaTempImage.setVisible(true);
     }
+
 }
